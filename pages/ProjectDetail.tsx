@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { getProjectById, getProjectsByCategory } from '../data';
+import SEO from '../components/SEO';
 
 const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -11,6 +12,7 @@ const ProjectDetail: React.FC = () => {
   if (!project) {
     return (
       <div className="min-h-[50vh] flex flex-col items-center justify-center">
+        <SEO title="Project Not Found" />
         <h2 className="font-serif text-3xl mb-4">Project not found</h2>
         <Link to="/" className="text-sm uppercase tracking-widest border-b border-black pb-1">Back to Home</Link>
       </div>
@@ -54,6 +56,9 @@ const ProjectDetail: React.FC = () => {
     });
   };
 
+  // SEO Description: Limit to 160 chars and strip markdown for meta tag
+  const metaDescription = project.description.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1').substring(0, 160) + "...";
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -62,6 +67,13 @@ const ProjectDetail: React.FC = () => {
       transition={{ duration: 0.8 }}
       className="pt-6"
     >
+      <SEO 
+        title={project.title} 
+        description={metaDescription}
+        image={project.thumbnail}
+        type="article"
+      />
+
       <div className="flex flex-col lg:flex-row lg:gap-24">
         
         {/* Sticky Sidebar (Info) */}

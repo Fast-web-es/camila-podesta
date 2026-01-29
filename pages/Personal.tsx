@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { getProjectsByCategory } from '../data';
 import { Project } from '../types';
 import { ArrowUpRight } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Personal: React.FC = () => {
   const projects = getProjectsByCategory('Personal');
@@ -35,6 +36,10 @@ const Personal: React.FC = () => {
       className="min-h-[70vh] flex flex-col justify-center"
       onMouseMove={handleMouseMove}
     >
+      <SEO 
+        title="Personal Projects" 
+        description="Experimental, artistic, and personal graphic design works by Marcos Morales." 
+      />
       <section className="relative">
          
          {/* --- DESKTOP VIEW: TEXT WALL & CURSOR REVEAL --- */}

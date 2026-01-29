@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const About: React.FC = () => {
   return (
@@ -11,6 +12,10 @@ const About: React.FC = () => {
       transition={{ duration: 0.8 }}
       className="pt-6"
     >
+      <SEO 
+        title="About" 
+        description="Marcos Morales is a graphic designer and artist based in Norway, specializing in editorial design and collage art." 
+      />
       <div className="flex flex-col lg:flex-row lg:gap-24 items-start relative">
         
         {/* Left Column: Headline + Bio */}

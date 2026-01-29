@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const Contact: React.FC = () => {
   return (
@@ -10,6 +11,10 @@ const Contact: React.FC = () => {
       transition={{ duration: 0.8 }}
       className="pt-10 max-w-5xl mx-auto"
     >
+      <SEO 
+        title="Contact" 
+        description="Get in touch with Marcos Morales for design projects, collaborations, or inquiries." 
+      />
       <div className="mb-20">
         <h2 className="text-sm font-sans uppercase tracking-widest text-gray-400 mb-6">
           Get in touch
