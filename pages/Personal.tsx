@@ -38,7 +38,8 @@ const Personal: React.FC = () => {
       <section className="relative">
          
          {/* --- DESKTOP VIEW: TEXT WALL & CURSOR REVEAL --- */}
-         <div className="hidden lg:block relative z-10">
+         {/* Z-INDEX CHANGED: Increased to z-20 so text sits ON TOP of the image */}
+         <div className="hidden lg:block relative z-20">
             {/* 
                 Changes for "Lighter" feel:
                 1. gap-x-12 gap-y-8: More physical space between items.
@@ -62,7 +63,7 @@ const Personal: React.FC = () => {
                     */}
                     <h2 className={`
                       text-5xl md:text-6xl xl:text-7xl font-display font-light text-ink transition-all duration-300 ease-out
-                      ${activeProject?.id === project.id ? 'opacity-100 scale-105 z-20' : 'opacity-40 hover:opacity-100 blur-[0.5px] hover:blur-0'}
+                      ${activeProject?.id === project.id ? 'opacity-100 scale-105' : 'opacity-40 hover:opacity-100 blur-[0.5px] hover:blur-0'}
                     `}>
                       {project.title}
                     </h2>
@@ -79,16 +80,17 @@ const Personal: React.FC = () => {
          </div>
 
          {/* --- DESKTOP: FLOATING IMAGE LAYER --- */}
-         {/* This layer sits on top (z-20) but ignores pointer events so you can click the links underneath */}
+         {/* Z-INDEX CHANGED: Lowered to z-10 (was 30) so it sits BEHIND the text. */}
+         {/* WIDTH CHANGED: Increased from 320px to 500px for larger impact. */}
          <motion.div 
-            className="hidden lg:block fixed top-0 left-0 pointer-events-none z-30 overflow-hidden rounded-sm shadow-2xl"
+            className="hidden lg:block fixed top-0 left-0 pointer-events-none z-10 overflow-hidden rounded-sm shadow-2xl"
             style={{ 
               x, 
               y,
               // Offset the image so the cursor is centered-ish or slightly top-left of the image
               translateX: '-50%', 
               translateY: '-50%',
-              width: '320px', // Adjusted width for elegance
+              width: '500px', // Increased size
             }}
          >
             <AnimatePresence mode="wait">
