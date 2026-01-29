@@ -11,9 +11,8 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 
 // IMPORTANT: 
-// We use HashRouter here to prevent routing errors in the preview environment.
-// WHEN DEPLOYING TO VERCEL: Change 'HashRouter' to 'BrowserRouter' below to get clean URLs (SEO friendly).
-const Router = HashRouter; 
+// Changed to BrowserRouter for Vercel production deployment to get clean URLs.
+const Router = BrowserRouter; 
 
 root.render(
   <React.StrictMode>
