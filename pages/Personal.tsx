@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { getProjectsByCategory } from '../data';
@@ -22,9 +22,18 @@ const Personal: React.FC = () => {
   const x = useSpring(mouseX, springConfig);
   const y = useSpring(mouseY, springConfig);
 
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    // Only enable complex mouse tracking on larger screens
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
   const handleMouseMove = (e: React.MouseEvent) => {
-    // Optimization: Only update state if screen is wide (desktop)
-    if (window.innerWidth >= 1024) {
+    if (isDesktop) {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
     }
@@ -37,7 +46,7 @@ const Personal: React.FC = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8 }}
       className="min-h-[70vh] flex flex-col justify-center"
-      onMouseMove={handleMouseMove}
+      onMouseMove={isDesktop ? handleMouseMove : undefined}
     >
       <SEO 
         title="Personal Projects" 
@@ -48,62 +57,69 @@ const Personal: React.FC = () => {
          {/* --- DESKTOP VIEW: TEXT WALL & CURSOR REVEAL --- */}
          <div className="hidden lg:block relative z-20">
             <div className="flex flex-wrap justify-center items-center gap-x-16 gap-y-12 leading-loose max-w-7xl mx-auto px-12 py-20">
-              {projects.map((project, index) => (
-                <React.Fragment key={project.id}>
-                  <Link 
-                    to={`/personal/${project.id}`}
-                    className="relative group inline-block"
-                    onMouseEnter={() => setActiveProject(project)}
-                    onMouseLeave={() => setActiveProject(null)}
-                  >
-                    <h2 className={`
-                      text-5xl md:text-6xl xl:text-7xl font-display font-light text-ink transition-all duration-300 ease-out
-                      ${activeProject?.id === project.id ? 'opacity-100 scale-105' : 'opacity-40 hover:opacity-100 blur-[0.5px] hover:blur-0'}
-                    `}>
-                      {project.title}
-                    </h2>
-                  </Link>
-                  {index < projects.length - 1 && (
-                    <span className="text-3xl xl:text-5xl font-display font-light text-gray-300 select-none opacity-30">
-                      /
-                    </span>
-                  )}
-                </React.Fragment>
-              ))}
+              {projects.map((project, index) => {
+                const isHovered = activeProject?.id === project.id;
+                // Check if this specific project has a dark image and needs light text
+                const isDarkImage = project.id === 'in-deep-quiet';
+                
+                return (
+                  <React.Fragment key={project.id}>
+                    <Link 
+                      to={`/personal/${project.id}`}
+                      className="relative group inline-block"
+                      onMouseEnter={() => setIsDesktop && setActiveProject(project)}
+                      onMouseLeave={() => setIsDesktop && setActiveProject(null)}
+                    >
+                      <h2 className={`
+                        text-5xl md:text-6xl xl:text-7xl font-display font-light transition-all duration-300 ease-out
+                        ${isHovered ? 'opacity-100 scale-105' : 'opacity-40 hover:opacity-100 blur-[0.5px] hover:blur-0'}
+                        ${isHovered && isDarkImage ? 'text-paper' : 'text-ink'}
+                      `}>
+                        {project.title}
+                      </h2>
+                    </Link>
+                    {index < projects.length - 1 && (
+                      <span className="text-3xl xl:text-5xl font-display font-light text-gray-300 select-none opacity-30">
+                        /
+                      </span>
+                    )}
+                  </React.Fragment>
+                );
+              })}
             </div>
          </div>
 
          {/* --- DESKTOP: FLOATING IMAGE LAYER --- */}
-         <motion.div 
-            className="hidden lg:block fixed top-0 left-0 pointer-events-none z-10 overflow-hidden rounded-sm shadow-2xl"
-            style={{ 
-              x, 
-              y,
-              translateX: '-50%', 
-              translateY: '-50%',
-              width: '500px',
-            }}
-         >
-            <AnimatePresence mode="wait">
-              {activeProject && (
-                <motion.div
-                  key={activeProject.id}
-                  initial={{ opacity: 0, scale: 0.9, filter: 'blur(5px)' }}
-                  animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                  exit={{ opacity: 0, scale: 0.9, filter: 'blur(5px)' }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <img 
-                    src={activeProject.thumbnail} 
-                    alt={activeProject.title}
-                    className="w-full h-auto object-cover aspect-[4/3]" 
-                    // No lazy loading needed here as it needs to be instant on hover
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
-         </motion.div>
-
+         {isDesktop && (
+           <motion.div 
+              className="hidden lg:block fixed top-0 left-0 pointer-events-none z-10 overflow-hidden rounded-sm shadow-2xl"
+              style={{ 
+                x, 
+                y,
+                translateX: '-50%', 
+                translateY: '-50%',
+                width: '500px',
+              }}
+           >
+              <AnimatePresence mode="wait">
+                {activeProject && (
+                  <motion.div
+                    key={activeProject.id}
+                    initial={{ opacity: 0, scale: 0.9, filter: 'blur(5px)' }}
+                    animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                    exit={{ opacity: 0, scale: 0.9, filter: 'blur(5px)' }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <img 
+                      src={activeProject.thumbnail} 
+                      alt={activeProject.title}
+                      className="w-full h-auto object-cover aspect-[4/3]" 
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+           </motion.div>
+         )}
 
          {/* --- MOBILE/TABLET VIEW: EDITORIAL STACK --- */}
          <div className="lg:hidden flex flex-col space-y-16 pb-20">

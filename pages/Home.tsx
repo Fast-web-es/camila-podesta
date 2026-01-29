@@ -29,12 +29,12 @@ const Home: React.FC = () => {
          </div>
          
          {/* 
-            Masonry Layout:
-            - Changed gap from gap-12/24 to gap-6 (mobile) and gap-8 (desktop)
-            - This creates the "narrow streets" effect requested.
-            - Added xl:columns-3 for better density on very wide screens.
+            Grid Layout:
+            - Switched to CSS Grid for strict alignment.
+            - uniform squares requires the parent to be a grid, not columns.
+            - Added generous gap-y to separate the text of one row from the image of the next.
          */}
-         <div className="block md:columns-2 xl:columns-3 gap-6 md:gap-8 space-y-6 md:space-y-8">
+         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-12 md:gap-x-8 md:gap-y-16">
            {commercialProjects.map((project) => (
              <ProjectItem key={project.id} project={project} />
            ))}

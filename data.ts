@@ -206,7 +206,7 @@ const commercialOverrides: Record<string, ProjectOverride> = {
     client: "Ha Ash",
     description: "Music video\n\nIllustrations for the music video “30 de Febrero” from the Mexican pop duet Ha Ash.\nThe singers go through a calendar with impossible situations, relating these to the concept of “30th of February”.\n\nArt director: Santiago Idelson.",
     imageCount: 13,
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    video: "https://www.youtube.com/embed/83ckXYtg52I"
   },
   "Netcom style frames": {
     id: "netcom-style-frames",

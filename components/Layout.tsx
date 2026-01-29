@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { Menu, X, Instagram } from 'lucide-react';
 import ScrollToTop from './ScrollToTop';
+import CookieConsent from './CookieConsent';
 
 const Layout: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -89,6 +90,9 @@ const Layout: React.FC = () => {
 
         </div>
       </footer>
+      
+      {/* Cookie Consent Banner */}
+      <CookieConsent />
     </div>
   );
 };

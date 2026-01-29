@@ -1,23 +1,18 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 
-interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+interface OptimizedImageProps extends HTMLMotionProps<"img"> {
   src: string;
   alt: string;
   className?: string;
-  sizes?: string; // Helpful for browser to pick right size
+  sizes?: string; 
 }
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({ src, alt, className, sizes, ...props }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <div className={`relative overflow-hidden bg-gray-200 ${className}`}>
-      {/* 
-         Blur placeholder logic could go here, but for now just a nice background color 
-         prevents the "collapse" effect.
-      */}
-      
+    <div className={`relative overflow-hidden bg-gray-200 ${className || ''}`}>
       <motion.img
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoaded ? 1 : 0 }}
@@ -25,10 +20,11 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({ src, alt, className, si
         src={src}
         alt={alt}
         sizes={sizes}
-        loading="lazy"     // CRITICAL: Only download when visible
-        decoding="async"   // CRITICAL: Don't freeze main thread while decoding
+        loading="lazy"
+        decoding="async"
         onLoad={() => setIsLoaded(true)}
-        className={`w-full h-full object-cover block ${className}`}
+        // 'will-change-opacity' hints the browser to optimize compositing for this element
+        className={`w-full h-full object-cover block will-change-opacity ${className || ''}`}
         {...props}
       />
     </div>

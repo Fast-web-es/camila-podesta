@@ -17,10 +17,8 @@ const SEO: React.FC<SEOProps> = ({
   const fullTitle = title === siteTitle ? siteTitle : `${title} | ${siteTitle}`;
 
   useEffect(() => {
-    // 1. Update Title
     document.title = fullTitle;
 
-    // 2. Helper to update or create meta tags
     const updateMeta = (name: string, content: string, attr: 'name' | 'property' = 'name') => {
       let element = document.querySelector(`meta[${attr}="${name}"]`);
       if (!element) {
@@ -31,7 +29,6 @@ const SEO: React.FC<SEOProps> = ({
       element.setAttribute('content', content);
     };
 
-    // 3. Update Standard & Social Meta Tags
     if (description) {
       updateMeta('description', description);
       updateMeta('og:description', description, 'property');
@@ -50,7 +47,7 @@ const SEO: React.FC<SEOProps> = ({
 
   }, [fullTitle, description, image, type]);
 
-  return null; // This component renders nothing visually
+  return null;
 };
 
 export default SEO;
