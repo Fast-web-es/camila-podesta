@@ -5,6 +5,7 @@ import { getProjectsByCategory } from '../data';
 import { Project } from '../types';
 import { ArrowUpRight } from 'lucide-react';
 import SEO from '../components/SEO';
+import OptimizedImage from '../components/OptimizedImage';
 
 const Personal: React.FC = () => {
   const projects = getProjectsByCategory('Personal');
@@ -22,9 +23,11 @@ const Personal: React.FC = () => {
   const y = useSpring(mouseY, springConfig);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    // We update the motion values directly for performance
-    mouseX.set(e.clientX);
-    mouseY.set(e.clientY);
+    // Optimization: Only update state if screen is wide (desktop)
+    if (window.innerWidth >= 1024) {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    }
   };
 
   return (
@@ -43,14 +46,7 @@ const Personal: React.FC = () => {
       <section className="relative">
          
          {/* --- DESKTOP VIEW: TEXT WALL & CURSOR REVEAL --- */}
-         {/* Z-INDEX CHANGED: Increased to z-20 so text sits ON TOP of the image */}
          <div className="hidden lg:block relative z-20">
-            {/* 
-                Changes for "Lighter" feel:
-                1. gap-x-12 gap-y-8: More physical space between items.
-                2. leading-loose: Much more line height.
-                3. max-w-7xl: Wider container to let text breathe.
-            */}
             <div className="flex flex-wrap justify-center items-center gap-x-16 gap-y-12 leading-loose max-w-7xl mx-auto px-12 py-20">
               {projects.map((project, index) => (
                 <React.Fragment key={project.id}>
@@ -60,12 +56,6 @@ const Personal: React.FC = () => {
                     onMouseEnter={() => setActiveProject(project)}
                     onMouseLeave={() => setActiveProject(null)}
                   >
-                    {/* 
-                        Typography Changes:
-                        1. Removed 'italic' to prevent layout shift.
-                        2. Changed duration-500 to duration-300 for snappier feel.
-                        3. Lowered default opacity to 40% so the active one (100%) pops more.
-                    */}
                     <h2 className={`
                       text-5xl md:text-6xl xl:text-7xl font-display font-light text-ink transition-all duration-300 ease-out
                       ${activeProject?.id === project.id ? 'opacity-100 scale-105' : 'opacity-40 hover:opacity-100 blur-[0.5px] hover:blur-0'}
@@ -73,7 +63,6 @@ const Personal: React.FC = () => {
                       {project.title}
                     </h2>
                   </Link>
-                  {/* The Divider: Lighter color and thinner font */}
                   {index < projects.length - 1 && (
                     <span className="text-3xl xl:text-5xl font-display font-light text-gray-300 select-none opacity-30">
                       /
@@ -85,17 +74,14 @@ const Personal: React.FC = () => {
          </div>
 
          {/* --- DESKTOP: FLOATING IMAGE LAYER --- */}
-         {/* Z-INDEX CHANGED: Lowered to z-10 (was 30) so it sits BEHIND the text. */}
-         {/* WIDTH CHANGED: Increased from 320px to 500px for larger impact. */}
          <motion.div 
             className="hidden lg:block fixed top-0 left-0 pointer-events-none z-10 overflow-hidden rounded-sm shadow-2xl"
             style={{ 
               x, 
               y,
-              // Offset the image so the cursor is centered-ish or slightly top-left of the image
               translateX: '-50%', 
               translateY: '-50%',
-              width: '500px', // Increased size
+              width: '500px',
             }}
          >
             <AnimatePresence mode="wait">
@@ -111,6 +97,7 @@ const Personal: React.FC = () => {
                     src={activeProject.thumbnail} 
                     alt={activeProject.title}
                     className="w-full h-auto object-cover aspect-[4/3]" 
+                    // No lazy loading needed here as it needs to be instant on hover
                   />
                 </motion.div>
               )}
@@ -123,7 +110,7 @@ const Personal: React.FC = () => {
             {projects.map((project) => (
               <Link to={`/personal/${project.id}`} key={project.id} className="group block">
                 <div className="relative overflow-hidden mb-6 aspect-[4/3]">
-                  <img 
+                  <OptimizedImage
                     src={project.thumbnail} 
                     alt={project.title}
                     className="w-full h-full object-cover transform transition-transform duration-[1.5s] ease-out group-hover:scale-105 grayscale group-hover:grayscale-0"

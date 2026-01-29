@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { getProjectById, getProjectsByCategory } from '../data';
 import SEO from '../components/SEO';
+import OptimizedImage from '../components/OptimizedImage';
 
 const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -19,24 +20,17 @@ const ProjectDetail: React.FC = () => {
     );
   }
 
-  // Determine context based on the project's category
-  // This ensures next/prev buttons stay within "Commercial" or "Personal"
   const categoryProjects = getProjectsByCategory(project.category as 'Commercial' | 'Personal');
   const currentIndex = categoryProjects.findIndex(p => p.id === project.id);
   const prevProject = categoryProjects[currentIndex - 1];
   const nextProject = categoryProjects[currentIndex + 1];
 
-  // Determine the Base URL for links
   const baseCategoryUrl = project.category === 'Commercial' ? '/commercial-work' : '/personal';
-  // Determine Back Button Destination
   const backLink = project.category === 'Commercial' ? '/' : '/personal';
   const backLabel = project.category === 'Commercial' ? 'Back to Commercial' : 'Back to Personal';
 
-  // Helper function to render description with simple markdown links [text](url)
   const renderDescription = (text: string) => {
-    // Split by the markdown link regex. The capturing group () ensures the split parts are included in the array.
     const parts = text.split(/(\[.*?\]\(.*?\))/g);
-    
     return parts.map((part, index) => {
       const match = part.match(/^\[(.*?)\]\((.*?)\)$/);
       if (match) {
@@ -56,7 +50,6 @@ const ProjectDetail: React.FC = () => {
     });
   };
 
-  // SEO Description: Limit to 160 chars and strip markdown for meta tag
   const metaDescription = project.description.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1').substring(0, 160) + "...";
 
   return (
@@ -132,11 +125,11 @@ const ProjectDetail: React.FC = () => {
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: "-10%" }} // Load when 10% away from view
               transition={{ duration: 0.8 }}
-              className={index % 2 !== 0 ? "lg:w-3/4 lg:self-end" : "w-full"} // Alternate widths for editorial rhythm
+              className={index % 2 !== 0 ? "lg:w-3/4 lg:self-end" : "w-full"} 
             >
-              <img 
+              <OptimizedImage 
                 src={img} 
                 alt={`${project.title} view ${index + 1}`} 
                 className="w-full h-auto shadow-sm"
@@ -145,7 +138,7 @@ const ProjectDetail: React.FC = () => {
             </motion.div>
           ))}
 
-           {/* Navigation Footer (Inside content column) */}
+           {/* Navigation Footer */}
           <div className="border-t border-gray-300 pt-16 mt-16 flex flex-col space-y-8 md:space-y-0 md:flex-row justify-between items-start md:items-center">
             {prevProject ? (
               <Link to={`${baseCategoryUrl}/${prevProject.id}`} className="group w-full md:w-auto">

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import OptimizedImage from '../components/OptimizedImage';
 
 const About: React.FC = () => {
   return (
@@ -19,16 +20,12 @@ const About: React.FC = () => {
       <div className="flex flex-col lg:flex-row lg:gap-24 items-start relative">
         
         {/* Left Column: Headline + Bio */}
-        {/* We use 'sticky' here so if the right column is longer, this stays visible */}
         <div className="lg:w-5/12 lg:sticky lg:top-32 flex flex-col justify-between mb-16 lg:mb-0">
           <div>
-            {/* Headline */}
-            {/* Updated typography: Smaller size, looser leading, wider tracking for editorial feel */}
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-light leading-relaxed tracking-wide text-ink max-w-xl">
               I'm Marcos Morales, a graphic designer and artist based in Norway. I have an insatiable curiosity, which drives me to explore new places and connect with other creatives for exciting collaborations.
             </h1>
 
-            {/* Bio & Email */}
             <div className="mt-12 lg:mt-24 max-w-md">
               <p className="text-lg leading-relaxed mb-8 text-gray-800">
                 For the last years I have been working mostly as a freelancer for studios and clients from different parts of the world.
@@ -50,16 +47,14 @@ const About: React.FC = () => {
         </div>
 
         {/* Right Column: Image + Data Lists */}
-        {/* This column will scroll naturally. The padding bottom ensures it doesn't hit the footer abruptly. */}
         <div className="lg:w-7/12 w-full flex flex-col">
            
-           {/* Image with specific aspect ratio 2500x1454 */}
            <div className="mb-16 w-full relative">
-             <div className="aspect-[2500/1454] w-full overflow-hidden bg-gray-200">
-               <img 
+             <div className="w-full overflow-hidden bg-gray-200">
+               <OptimizedImage 
                  src="/about/about.jpg" 
                  alt="Marcos Morales Portrait" 
-                 className="w-full h-full object-cover grayscale block"
+                 className="w-full h-auto object-cover grayscale block"
                />
              </div>
              <p className="mt-3 text-[10px] text-gray-400 uppercase tracking-widest text-right">
@@ -68,7 +63,6 @@ const About: React.FC = () => {
            </div>
 
            {/* The Lists */}
-           {/* Using a grid that breaks down nicely on mobile */}
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8 font-serif text-ink">
               
               {/* Projects */}
