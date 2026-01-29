@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, HashRouter } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 
 const rootElement = document.getElementById('root');
@@ -17,10 +16,8 @@ const Router = BrowserRouter;
 
 root.render(
   <React.StrictMode>
-    <HelmetProvider>
-      <Router>
-        <App />
-      </Router>
-    </HelmetProvider>
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>
 );
