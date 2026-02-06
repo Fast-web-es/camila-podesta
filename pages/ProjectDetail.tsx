@@ -1,14 +1,16 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Lock } from 'lucide-react';
 import { getProjectById, getProjectsByCategory } from '../data';
 import SEO from '../components/SEO';
 import OptimizedImage from '../components/OptimizedImage';
+import { useCookieConsent } from '../components/CookieConsent';
 
 const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const project = getProjectById(id || '');
+  const { consent, updateConsent } = useCookieConsent();
 
   if (!project) {
     return (
@@ -107,16 +109,34 @@ const ProjectDetail: React.FC = () => {
 
         {/* Scrollable Media Feed */}
         <div className="lg:w-2/3 flex flex-col space-y-12 md:space-y-24">
+          
+          {/* Conditional Video Rendering for GDPR */}
           {project.video && (
-             <div className="w-full aspect-video bg-black">
-                <iframe 
-                  className="w-full h-full"
-                  src={project.video} 
-                  title="Project Video"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
+             <div className="w-full aspect-video bg-gray-100 relative">
+               {consent === 'accepted' ? (
+                  <iframe 
+                    className="w-full h-full"
+                    src={project.video} 
+                    title="Project Video"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+               ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-paper border border-gray-200">
+                     <Lock className="text-gray-400 mb-4" size={24} />
+                     <h3 className="font-serif text-xl mb-2 text-ink">Video Content Restricted</h3>
+                     <p className="font-sans text-xs text-gray-500 mb-6 max-w-sm">
+                       This content is hosted by a third party (Vimeo/YouTube). To view it, you must accept our cookie policy regarding external embeds.
+                     </p>
+                     <button 
+                       onClick={() => updateConsent('accepted')}
+                       className="bg-ink text-paper text-[10px] uppercase tracking-[0.2em] px-6 py-3 hover:bg-gray-700 transition-colors"
+                     >
+                       Accept Cookies & Load Video
+                     </button>
+                  </div>
+               )}
              </div>
           )}
           

@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, HashRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import App from './App';
+import { CookieProvider } from './components/CookieConsent';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -10,14 +11,15 @@ if (!rootElement) {
 
 const root = ReactDOM.createRoot(rootElement);
 
-// IMPORTANT: 
-// Changed to BrowserRouter for Vercel production deployment to get clean URLs.
-const Router = BrowserRouter; 
-
+// We use HashRouter here because the preview environment serves the app from a dynamic subpath 
+// (the long ID in your URL). HashRouter ignores that path and uses the hash (#) for navigation,
+// ensuring the app renders correctly everywhere.
 root.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <CookieProvider>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </CookieProvider>
   </React.StrictMode>
 );

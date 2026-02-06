@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { Menu, X, Instagram } from 'lucide-react';
 import ScrollToTop from './ScrollToTop';
-import CookieConsent from './CookieConsent';
+import { useCookieConsent } from './CookieConsent';
 
 const Layout: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { showBanner } = useCookieConsent();
 
   // Updated: Smaller font (text-xs), wider tracking (tracking-[0.2em]), larger gap in parent
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -75,9 +76,17 @@ const Layout: React.FC = () => {
           
           {/* Social Icons (Left) - Only Instagram as requested */}
           <div className="flex items-center space-x-6">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-ink hover:text-gray-500 transition-colors" aria-label="Instagram">
+            <a href="https://instagram.com/marcosmoralesdg" target="_blank" rel="noopener noreferrer" className="text-ink hover:text-gray-500 transition-colors" aria-label="Instagram">
               <Instagram size={24} strokeWidth={1.5} />
             </a>
+            
+            {/* Cookie Settings Button */}
+            <button 
+              onClick={showBanner}
+              className="text-[10px] uppercase tracking-widest text-gray-400 hover:text-ink transition-colors"
+            >
+              Cookies
+            </button>
           </div>
 
           {/* Email (Right) */}
@@ -90,9 +99,6 @@ const Layout: React.FC = () => {
 
         </div>
       </footer>
-      
-      {/* Cookie Consent Banner */}
-      <CookieConsent />
     </div>
   );
 };

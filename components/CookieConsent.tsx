@@ -1,29 +1,67 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext, useContext, ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const CookieConsent: React.FC = () => {
+// --- CONTEXT DEFINITION ---
+type ConsentStatus = 'accepted' | 'declined' | null;
+
+interface CookieContextType {
+  consent: ConsentStatus;
+  updateConsent: (status: 'accepted' | 'declined') => void;
+  showBanner: () => void;
+}
+
+const CookieContext = createContext<CookieContextType | undefined>(undefined);
+
+export const useCookieConsent = () => {
+  const context = useContext(CookieContext);
+  if (!context) {
+    throw new Error('useCookieConsent must be used within a CookieProvider');
+  }
+  return context;
+};
+
+// --- PROVIDER COMPONENT ---
+export const CookieProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [consent, setConsent] = useState<ConsentStatus>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check if user has already made a choice
-    const consent = localStorage.getItem('cookieConsent');
-    if (!consent) {
-      // Small delay to allow enter animations of the page to finish first
+    const storedConsent = localStorage.getItem('cookieConsent') as ConsentStatus;
+    setConsent(storedConsent);
+
+    // If no choice has been made, show banner after delay
+    if (!storedConsent) {
       const timer = setTimeout(() => setIsVisible(true), 2000);
       return () => clearTimeout(timer);
     }
   }, []);
 
-  const handleAccept = () => {
-    localStorage.setItem('cookieConsent', 'accepted');
+  const updateConsent = (status: 'accepted' | 'declined') => {
+    localStorage.setItem('cookieConsent', status);
+    setConsent(status);
     setIsVisible(false);
   };
 
-  const handleDecline = () => {
-    localStorage.setItem('cookieConsent', 'declined');
-    setIsVisible(false);
+  const showBanner = () => {
+    setIsVisible(true);
   };
 
+  return (
+    <CookieContext.Provider value={{ consent, updateConsent, showBanner }}>
+      {children}
+      <CookieBanner isVisible={isVisible} onAccept={() => updateConsent('accepted')} onDecline={() => updateConsent('declined')} />
+    </CookieContext.Provider>
+  );
+};
+
+// --- UI COMPONENT ---
+interface CookieBannerProps {
+  isVisible: boolean;
+  onAccept: () => void;
+  onDecline: () => void;
+}
+
+const CookieBanner: React.FC<CookieBannerProps> = ({ isVisible, onAccept, onDecline }) => {
   return (
     <AnimatePresence>
       {isVisible && (
@@ -37,21 +75,22 @@ const CookieConsent: React.FC = () => {
           <div className="max-w-[1920px] mx-auto px-6 md:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-6">
             
             <p className="text-xs font-sans text-gray-500 text-center md:text-left leading-relaxed max-w-2xl">
-              By using this website, you agree to our use of cookies. We use cookies to provide you with a great experience and to help our website run effectively.
+              We use cookies to enable video content and analyze site traffic. 
+              According to GDPR, we cannot load third-party embeds (like Vimeo or YouTube) without your consent.
             </p>
 
             <div className="flex items-center gap-6 shrink-0">
               <button
-                onClick={handleDecline}
+                onClick={onDecline}
                 className="text-[10px] uppercase tracking-[0.2em] text-gray-400 hover:text-ink transition-colors font-sans py-2"
               >
-                Decline
+                Decline (Essential Only)
               </button>
               <button
-                onClick={handleAccept}
+                onClick={onAccept}
                 className="bg-ink text-paper text-[10px] uppercase tracking-[0.2em] px-8 py-3 hover:bg-gray-800 transition-colors font-sans"
               >
-                Accept
+                Accept All
               </button>
             </div>
 
@@ -62,4 +101,4 @@ const CookieConsent: React.FC = () => {
   );
 };
 
-export default CookieConsent;
+export default CookieBanner;
