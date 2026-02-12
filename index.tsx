@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { CookieProvider } from './components/CookieConsent';
 
@@ -11,15 +11,14 @@ if (!rootElement) {
 
 const root = ReactDOM.createRoot(rootElement);
 
-// We use HashRouter here because the preview environment serves the app from a dynamic subpath 
-// (the long ID in your URL). HashRouter ignores that path and uses the hash (#) for navigation,
-// ensuring the app renders correctly everywhere.
+// Switched to BrowserRouter for production (Vercel) to remove the '#' from URLs.
+// Vercel handles the server-side routing (rewrites to index.html) automatically.
 root.render(
   <React.StrictMode>
     <CookieProvider>
-      <HashRouter>
+      <BrowserRouter>
         <App />
-      </HashRouter>
+      </BrowserRouter>
     </CookieProvider>
   </React.StrictMode>
 );
