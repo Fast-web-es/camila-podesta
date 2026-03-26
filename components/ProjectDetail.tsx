@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { motion } from 'motion/react';
 import { ArrowLeft, ArrowRight, Lock } from 'lucide-react';
 import { getProjectById, getProjectsByCategory } from '../data';
-import SEO from '../components/SEO';
 import OptimizedImage from '../components/OptimizedImage';
 import { useCookieConsent } from '../components/CookieConsent';
 
@@ -19,7 +18,6 @@ const ProjectDetail: React.FC = () => {
   if (!project) {
     return (
       <div className="min-h-[50vh] flex flex-col items-center justify-center">
-        <SEO title="Project Not Found" />
         <h2 className="font-serif text-3xl mb-4">Project not found</h2>
         <Link href="/" className="text-sm uppercase tracking-widest border-b border-black pb-1">Back to Home</Link>
       </div>
@@ -66,13 +64,6 @@ const ProjectDetail: React.FC = () => {
       transition={{ duration: 0.8 }}
       className="pt-6"
     >
-      <SEO 
-        title={project.title} 
-        description={metaDescription}
-        image={project.thumbnail}
-        type="article"
-      />
-
       <div className="flex flex-col lg:flex-row lg:gap-24">
         
         {/* Sticky Sidebar (Info) */}

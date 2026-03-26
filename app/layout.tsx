@@ -24,7 +24,11 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Marcos Morales | Graphic Designer & Artist",
+  metadataBase: new URL("https://ais-pre-xwcnpi2b5ifia2yg3r3nrg-25973336913.europe-west2.run.app"),
+  title: {
+    default: "Marcos Morales | Graphic Designer & Artist",
+    template: "%s | Marcos Morales",
+  },
   description: "A sophisticated, minimalist portfolio for a Graphic Designer and Artist featuring a gallery grid, editorial layout, and smooth transitions.",
   openGraph: {
     title: "Marcos Morales | Graphic Designer & Artist",

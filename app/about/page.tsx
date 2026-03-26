@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import Link from 'next/link';
-import SEO from '@/components/SEO';
 import OptimizedImage from '@/components/OptimizedImage';
 
 const About: React.FC = () => {
@@ -15,10 +14,6 @@ const About: React.FC = () => {
       transition={{ duration: 0.8 }}
       className="pt-6"
     >
-      <SEO 
-        title="About" 
-        description="Marcos Morales is a graphic designer and artist based in Norway, specializing in editorial design and collage art." 
-      />
       <div className="flex flex-col lg:flex-row lg:gap-24 items-start relative">
         <div className="lg:w-5/12 lg:sticky lg:top-32 flex flex-col justify-between mb-16 lg:mb-0">
           <div>

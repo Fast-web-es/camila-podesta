@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { getProjectsByCategory } from '@/data';
 import { Project } from '@/types';
 import { ArrowUpRight } from 'lucide-react';
-import SEO from '@/components/SEO';
 import OptimizedImage from '@/components/OptimizedImage';
 
 const Personal: React.FC = () => {
@@ -42,10 +41,6 @@ const Personal: React.FC = () => {
       className="min-h-[70vh] flex flex-col justify-center"
       onMouseMove={isDesktop ? handleMouseMove : undefined}
     >
-      <SEO 
-        title="Personal Projects" 
-        description="Experimental, artistic, and personal graphic design works by Marcos Morales." 
-      />
       <section className="relative">
          <div className="hidden lg:block relative z-20">
             <div className="flex flex-wrap justify-center items-center gap-x-16 gap-y-12 leading-loose max-w-7xl mx-auto px-12 py-20">
