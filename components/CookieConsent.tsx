@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useEffect, createContext, useContext, ReactNode } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 
 // --- CONTEXT DEFINITION ---
 type ConsentStatus = 'accepted' | 'declined' | null;

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect } from 'react';
 
 interface SEOProps {
@@ -10,7 +12,7 @@ interface SEOProps {
 const SEO: React.FC<SEOProps> = ({ 
   title, 
   description = "A sophisticated, minimalist portfolio for a Graphic Designer and Artist featuring a gallery grid, editorial layout, and smooth transitions.", 
-  image = "/images/share.jpg", 
+  image = "/images/commercial/nat-geo-asombrosamente/1.jpg", 
   type = 'website' 
 }) => {
   const siteTitle = "Marcos Morales";

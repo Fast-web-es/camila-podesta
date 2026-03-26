@@ -1,6 +1,8 @@
+'use client';
+
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 import { Project } from '../types';
 import OptimizedImage from './OptimizedImage';
 
@@ -20,7 +22,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} 
       className="group cursor-pointer w-full"
     >
-      <Link to={`/${basePath}/${project.id}`} className="block h-full flex flex-col">
+      <Link href={`/${basePath}/${project.id}`} className="block h-full flex flex-col">
         <div className="mb-4 relative w-full">
            {/* 
               - aspect-square: Forces the 1:1 ratio.

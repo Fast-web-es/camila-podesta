@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
-import { motion, HTMLMotionProps } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'motion/react';
 
 interface OptimizedImageProps extends HTMLMotionProps<"img"> {
   src: string;
