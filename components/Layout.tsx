@@ -89,11 +89,21 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               Cookies
             </button>
           </div>
-          <a 
-            href="mailto:hello@marcos-morales.com" 
+          <a
+            href="mailto:hello@marcos-morales.com"
             className="font-serif text-xl md:text-2xl text-ink border-b border-ink pb-1 hover:italic transition-all duration-300"
           >
             hello@marcos-morales.com
+          </a>
+        </div>
+        <div className="max-w-[1920px] mx-auto mt-10 text-center">
+          <a
+            href="https://www.fast-web.es"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[10px] uppercase tracking-widest text-gray-400 hover:text-ink transition-colors"
+          >
+            Site by Fast Web
           </a>
         </div>
       </footer>
