@@ -1,46 +1,35 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { CookieProvider } from "@/components/CookieConsent";
 import Layout from "@/components/Layout";
 
-const playfair = Playfair_Display({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ais-pre-xwcnpi2b5ifia2yg3r3nrg-25973336913.europe-west2.run.app"),
+  metadataBase: new URL("https://camilapodesta.com"),
   title: {
-    default: "Marcos Morales | Graphic Designer & Artist",
-    template: "%s | Marcos Morales",
+    default: "Camila Podestá | Industrial & 3D Design",
+    template: "%s | Camila Podestá",
   },
-  description: "A sophisticated, minimalist portfolio for a Graphic Designer and Artist featuring a gallery grid, editorial layout, and smooth transitions.",
+  description:
+    "Industrial & 3D design based in Barcelona. Retail furniture, interior design, art & illustration by Camila Podestá.",
   openGraph: {
-    title: "Marcos Morales | Graphic Designer & Artist",
-    description: "A sophisticated, minimalist portfolio for a Graphic Designer and Artist featuring a gallery grid, editorial layout, and smooth transitions.",
-    images: ["/images/commercial/nat-geo-asombrosamente/1.jpg"],
+    title: "Camila Podestá | Industrial & 3D Design",
+    description:
+      "Industrial & 3D design based in Barcelona. Retail furniture, interior design, art & illustration.",
+    images: ["/works/retail/_home/asus.gif"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marcos Morales | Graphic Designer & Artist",
-    description: "A sophisticated, minimalist portfolio for a Graphic Designer and Artist featuring a gallery grid, editorial layout, and smooth transitions.",
-    images: ["/images/commercial/nat-geo-asombrosamente/1.jpg"],
+    title: "Camila Podestá | Industrial & 3D Design",
+    description:
+      "Industrial & 3D design based in Barcelona. Retail furniture, interior design, art & illustration.",
+    images: ["/works/retail/_home/asus.gif"],
   },
 };
 
@@ -51,12 +40,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${playfair.variable} ${cormorant.variable} ${dmSans.variable} antialiased`}
-      >
-        <CookieProvider>
-          <Layout>{children}</Layout>
-        </CookieProvider>
+      <body className={`${inter.variable} antialiased`}>
+        <Layout>{children}</Layout>
       </body>
     </html>
   );
