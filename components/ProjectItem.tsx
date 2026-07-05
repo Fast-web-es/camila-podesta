@@ -26,7 +26,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
         alt={project.title}
         loading="lazy"
         decoding="async"
-        className="h-[48%] md:h-[52%] w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105"
+        className="h-[80%] md:h-[82%] w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105"
       />
 
       {/* Still image of the project */}

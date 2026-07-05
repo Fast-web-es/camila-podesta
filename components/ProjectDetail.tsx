@@ -97,7 +97,7 @@ const ProjectDetail: React.FC = () => {
               </p>
             )}
 
-            <p className="text-base md:text-lg font-light text-gray-600 leading-relaxed font-sans whitespace-pre-line">
+            <p className="text-base md:text-lg font-normal text-gray-600 leading-relaxed font-sans whitespace-pre-line text-pretty">
               {renderDescription(project.description)}
             </p>
           </div>

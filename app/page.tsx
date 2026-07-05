@@ -13,22 +13,20 @@ const Home: React.FC = () => {
       transition={{ duration: 0.8 }}
     >
       {/* ---------------- HERO ---------------- */}
-      {/* The source video is 16:9 with the star centered in lots of empty
-          transparent space, so we crop it in a square box with object-cover
-          (+ scale) to make the star read big and centred on every screen. */}
-      <section className="flex items-center justify-center min-h-[48vh] md:min-h-[72vh] px-6">
-        <div className="w-[220px] h-[220px] sm:w-[300px] sm:h-[300px] md:w-[440px] md:h-[440px] overflow-hidden flex items-center justify-center">
-          <video
-            className="w-full h-full object-cover scale-[1.45]"
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster="/hero/estrella.gif"
-          >
-            <source src="/hero/estrella.mp4" type="video/mp4" />
-          </video>
-        </div>
+      {/* The star is a "shooting star" that travels diagonally across the whole
+          16:9 white frame, so we show the full frame at full viewport width
+          (edge to edge) and let it fly across on every screen. */}
+      <section className="w-full">
+        <video
+          className="block w-full h-auto"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/hero/estrella.gif"
+        >
+          <source src="/hero/estrella.mp4?v=3" type="video/mp4" />
+        </video>
       </section>
 
       {/* ---------------- SECTIONS ---------------- */}
@@ -37,25 +35,24 @@ const Home: React.FC = () => {
           const projects = getProjectsByCategory(section.category);
           return (
             <section key={section.category} id={section.category.toLowerCase()}>
-              {/* Header row: title · intro · distributed tags, with a rule below */}
-              <div className="px-5 md:px-10 border-b border-ink pb-3 mb-8 md:mb-10">
-                <div className="flex items-baseline gap-6 md:gap-10">
-                  <h2 className="font-sans font-bold text-2xl md:text-4xl tracking-tight uppercase shrink-0">
-                    {section.label}
-                  </h2>
-                  <p className="hidden sm:block font-sans text-[11px] md:text-xs text-ink leading-snug max-w-[16rem] shrink-0">
-                    {section.intro}
-                  </p>
-                  <div className="hidden md:flex flex-1 justify-around items-baseline">
-                    {section.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-sans text-[11px] md:text-xs uppercase tracking-[0.12em] text-ink"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+              {/* Header: left-aligned on mobile, centered on desktop.
+                  Divider rule on TOP. text-balance/pretty avoid widows. */}
+              <div className="px-5 md:px-10 border-t border-ink pt-7 md:pt-9 mb-9 md:mb-12 text-left md:text-center">
+                <h2 className="font-sans font-bold text-3xl md:text-5xl tracking-tight uppercase text-balance">
+                  {section.label}
+                </h2>
+                <p className="font-sans text-xs md:text-sm text-ink/70 mt-3 max-w-lg mx-0 md:mx-auto leading-snug text-pretty">
+                  {section.intro}
+                </p>
+                <div className="flex justify-start md:justify-center flex-wrap gap-x-6 gap-y-1 mt-4">
+                  {section.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="font-sans text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-ink/60"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
 
