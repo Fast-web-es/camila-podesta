@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   },
   description:
     "Industrial & 3D design based in Barcelona. Retail furniture, interior design, art & illustration by Camila Podestá.",
+  icons: {
+    icon: "/fav.png",
+    shortcut: "/fav.png",
+    apple: "/fav.png",
+  },
   openGraph: {
     title: "Camila Podestá | Industrial & 3D Design",
     description:
