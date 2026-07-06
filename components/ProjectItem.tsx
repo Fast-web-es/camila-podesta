@@ -29,7 +29,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
         className="h-[80%] md:h-[82%] w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105"
       />
 
-      {/* Still image of the project */}
+      {/* Still image of the project — standardized vertical card */}
       {cover && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -37,7 +37,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
           alt={project.title}
           loading="lazy"
           decoding="async"
-          className="h-full w-auto object-contain transition-opacity duration-500 group-hover:opacity-90"
+          className="h-full aspect-[2/3] object-cover transition-opacity duration-500 group-hover:opacity-90"
         />
       )}
     </Link>

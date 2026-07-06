@@ -489,6 +489,9 @@
   .table {
     display: table;
   }
+  .aspect-\[2\/3\] {
+    aspect-ratio: 2/3;
+  }
   .h-5 {
     height: calc(var(--spacing) * 5);
   }
@@ -506,6 +509,9 @@
   }
   .h-full {
     height: 100%;
+  }
+  .max-h-\[78vh\] {
+    max-height: 78vh;
   }
   .min-h-\[50vh\] {
     min-height: 50vh;
@@ -533,6 +539,9 @@
   }
   .max-w-\[1920px\] {
     max-width: 1920px;
+  }
+  .max-w-full {
+    max-width: 100%;
   }
   .max-w-lg {
     max-width: var(--container-lg);
@@ -605,6 +614,9 @@
   }
   .gap-x-6 {
     column-gap: calc(var(--spacing) * 6);
+  }
+  .gap-x-8 {
+    column-gap: calc(var(--spacing) * 8);
   }
   .gap-y-1 {
     row-gap: calc(var(--spacing) * 1);
@@ -1018,14 +1030,39 @@
       width: auto;
     }
   }
+  .md\:max-w-\[18rem\] {
+    @media (width >= 48rem) {
+      max-width: 18rem;
+    }
+  }
+  .md\:flex-1 {
+    @media (width >= 48rem) {
+      flex: 1;
+    }
+  }
+  .md\:shrink-0 {
+    @media (width >= 48rem) {
+      flex-shrink: 0;
+    }
+  }
   .md\:flex-row {
     @media (width >= 48rem) {
       flex-direction: row;
     }
   }
+  .md\:items-baseline {
+    @media (width >= 48rem) {
+      align-items: baseline;
+    }
+  }
   .md\:items-center {
     @media (width >= 48rem) {
       align-items: center;
+    }
+  }
+  .md\:justify-around {
+    @media (width >= 48rem) {
+      justify-content: space-around;
     }
   }
   .md\:justify-end {
@@ -1174,6 +1211,46 @@
     @media (width >= 64rem) {
       font-size: var(--text-6xl);
       line-height: var(--tw-leading, var(--text-6xl--line-height));
+    }
+  }
+  .xl\:max-w-\[18rem\] {
+    @media (width >= 80rem) {
+      max-width: 18rem;
+    }
+  }
+  .xl\:flex-1 {
+    @media (width >= 80rem) {
+      flex: 1;
+    }
+  }
+  .xl\:shrink-0 {
+    @media (width >= 80rem) {
+      flex-shrink: 0;
+    }
+  }
+  .xl\:flex-row {
+    @media (width >= 80rem) {
+      flex-direction: row;
+    }
+  }
+  .xl\:items-baseline {
+    @media (width >= 80rem) {
+      align-items: baseline;
+    }
+  }
+  .xl\:items-start {
+    @media (width >= 80rem) {
+      align-items: flex-start;
+    }
+  }
+  .xl\:justify-around {
+    @media (width >= 80rem) {
+      justify-content: space-around;
+    }
+  }
+  .xl\:gap-10 {
+    @media (width >= 80rem) {
+      gap: calc(var(--spacing) * 10);
     }
   }
   .\[\&\:\:-webkit-scrollbar\]\:hidden {

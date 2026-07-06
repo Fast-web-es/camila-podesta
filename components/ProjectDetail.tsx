@@ -120,7 +120,7 @@ const ProjectDetail: React.FC = () => {
             </video>
           ))}
 
-          {/* Desktop images */}
+          {/* Desktop images — capped so they fit the page and read whole */}
           {project.images.map((img, index) => (
             <motion.div
               key={`d-${index}`}
@@ -128,12 +128,15 @@ const ProjectDetail: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-8%' }}
               transition={{ duration: 0.7 }}
-              className={hasMobile ? 'hidden md:block' : 'block'}
+              className={`${hasMobile ? 'hidden md:flex' : 'flex'} justify-center`}
             >
-              <OptimizedImage
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={img}
                 alt={`${project.title} — ${index + 1}`}
-                className="w-full h-auto"
+                loading="lazy"
+                decoding="async"
+                className="w-auto max-w-full max-h-[78vh] object-contain"
               />
             </motion.div>
           ))}
@@ -141,11 +144,14 @@ const ProjectDetail: React.FC = () => {
           {/* Mobile images (Movil/ versions) */}
           {hasMobile &&
             project.mobileImages!.map((img, index) => (
-              <div key={`m-${index}`} className="block md:hidden">
-                <OptimizedImage
+              <div key={`m-${index}`} className="flex md:hidden justify-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src={img}
                   alt={`${project.title} — ${index + 1}`}
-                  className="w-full h-auto"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto object-contain"
                 />
               </div>
             ))}

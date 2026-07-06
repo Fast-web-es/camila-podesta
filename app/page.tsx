@@ -35,24 +35,27 @@ const Home: React.FC = () => {
           const projects = getProjectsByCategory(section.category);
           return (
             <section key={section.category} id={section.category.toLowerCase()}>
-              {/* Header: left-aligned at all sizes.
-                  Divider rule on TOP. text-balance/pretty avoid widows. */}
-              <div className="px-5 md:px-10 border-t border-ink pt-7 md:pt-9 mb-9 md:mb-12 text-left">
-                <h2 className="font-sans font-bold text-3xl md:text-5xl tracking-tight uppercase text-balance">
-                  {section.label}
-                </h2>
-                <p className="font-sans text-xs md:text-sm text-ink/70 mt-3 max-w-lg mx-0 leading-snug text-pretty">
-                  {section.intro}
-                </p>
-                <div className="flex justify-start flex-wrap gap-x-6 gap-y-1 mt-4">
-                  {section.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="font-sans text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-ink/60"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+              {/* Header: single distributed row on desktop (title · intro ·
+                  spread tags); stacked left-aligned on smaller screens.
+                  Divider rule on TOP. */}
+              <div className="px-5 md:px-10 border-t border-ink pt-7 md:pt-9 mb-9 md:mb-12">
+                <div className="flex flex-col gap-3 xl:flex-row xl:items-start xl:gap-10">
+                  <h2 className="font-sans font-bold text-3xl md:text-5xl leading-none tracking-tight uppercase text-balance xl:shrink-0">
+                    {section.label}
+                  </h2>
+                  <p className="font-sans text-xs md:text-sm text-ink/70 leading-snug xl:max-w-[18rem] xl:shrink-0">
+                    {section.intro}
+                  </p>
+                  <div className="flex flex-wrap gap-x-8 gap-y-1 xl:flex-1 xl:justify-around xl:items-baseline">
+                    {section.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="font-sans text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-ink/60 whitespace-nowrap"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
 
