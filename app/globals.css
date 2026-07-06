@@ -26,7 +26,7 @@ html,
 a,
 button,
 [role="button"] {
-  cursor: url("/flecha-cursor.png") 3 3, auto;
+  cursor: url("/flecha-cursor.png") 2 31, auto;
 }
 
 /* Perf: skip rendering/animating off-screen sections while scrolling.

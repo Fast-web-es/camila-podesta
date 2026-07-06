@@ -29,11 +29,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
       <footer className="py-5 px-5 md:px-10 mt-20 border-t border-ink">
         <div className="max-w-[1920px] mx-auto flex items-baseline gap-3">
-          <span className="font-sans font-bold text-sm tracking-[0.06em] uppercase">
+          <span className="font-sans font-bold text-sm md:text-base tracking-[0.06em] uppercase">
             Camila Podestá
           </span>
-          <span className="text-[10px] text-gray-500">
-            ©Copyright 2025. All Rights Reserved
+          <span className="font-sans text-sm md:text-base text-gray-500">
+            ©Copyright 2026. All Rights Reserved
           </span>
         </div>
       </footer>
