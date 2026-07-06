@@ -9,7 +9,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <div className="min-h-screen flex flex-col bg-paper text-ink">
       <ScrollToTop />
 
-      <header className="fixed top-0 w-full z-50 bg-paper/90 backdrop-blur-sm">
+      <header className="fixed top-0 w-full z-50 bg-paper">
         <div className="max-w-[1920px] mx-auto px-5 md:px-10 py-4 md:py-5 flex justify-between items-start gap-4">
           <span className="text-xs md:text-base font-sans font-medium leading-tight text-ink max-w-[45%]">
             Industrial &amp; 3D design

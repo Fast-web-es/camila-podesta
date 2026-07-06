@@ -21,6 +21,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Custom arrow cursor */
+html,
+a,
+button,
+[role="button"] {
+  cursor: url("/flecha-cursor.png") 3 3, auto;
+}
+
+/* Perf: skip rendering/animating off-screen sections while scrolling.
+   Keeps many animated GIFs from repainting when they are not visible. */
+main > div > section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 640px;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
