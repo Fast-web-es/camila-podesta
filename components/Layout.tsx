@@ -11,14 +11,14 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
       <header className="fixed top-0 w-full z-50 bg-paper/90 backdrop-blur-sm">
         <div className="max-w-[1920px] mx-auto px-5 md:px-10 py-4 md:py-5 flex justify-between items-start gap-4">
-          <span className="text-[10px] md:text-[11px] font-sans font-medium leading-tight text-ink max-w-[45%]">
+          <span className="text-xs md:text-base font-sans font-medium leading-tight text-ink max-w-[45%]">
             Industrial &amp; 3D design
             <br />
             based in Barcelona
           </span>
           <Link
             href="/"
-            className="font-sans font-bold text-sm md:text-base tracking-[0.06em] uppercase leading-none whitespace-nowrap hover:opacity-60 transition-opacity"
+            className="font-sans font-bold text-lg md:text-2xl tracking-[0.06em] uppercase leading-none whitespace-nowrap hover:opacity-60 transition-opacity"
           >
             Camila Podestá
           </Link>

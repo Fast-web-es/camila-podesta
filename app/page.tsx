@@ -23,7 +23,7 @@ const Home: React.FC = () => {
           loop
           muted
           playsInline
-          poster="/hero/estrella.gif"
+          poster="/hero/estrella-poster.jpg"
         >
           <source src="/hero/estrella.mp4?v=3" type="video/mp4" />
         </video>
@@ -35,16 +35,16 @@ const Home: React.FC = () => {
           const projects = getProjectsByCategory(section.category);
           return (
             <section key={section.category} id={section.category.toLowerCase()}>
-              {/* Header: left-aligned on mobile, centered on desktop.
+              {/* Header: left-aligned at all sizes.
                   Divider rule on TOP. text-balance/pretty avoid widows. */}
-              <div className="px-5 md:px-10 border-t border-ink pt-7 md:pt-9 mb-9 md:mb-12 text-left md:text-center">
+              <div className="px-5 md:px-10 border-t border-ink pt-7 md:pt-9 mb-9 md:mb-12 text-left">
                 <h2 className="font-sans font-bold text-3xl md:text-5xl tracking-tight uppercase text-balance">
                   {section.label}
                 </h2>
-                <p className="font-sans text-xs md:text-sm text-ink/70 mt-3 max-w-lg mx-0 md:mx-auto leading-snug text-pretty">
+                <p className="font-sans text-xs md:text-sm text-ink/70 mt-3 max-w-lg mx-0 leading-snug text-pretty">
                   {section.intro}
                 </p>
-                <div className="flex justify-start md:justify-center flex-wrap gap-x-6 gap-y-1 mt-4">
+                <div className="flex justify-start flex-wrap gap-x-6 gap-y-1 mt-4">
                   {section.tags.map((tag) => (
                     <span
                       key={tag}
