@@ -313,6 +313,14 @@ export const projects: Project[] = [
   },
 ];
 
+// Home carousel cover = dedicated "portada" still (decoupled from internal
+// images, so image 1 can be changed without affecting the home teaser).
+projects.forEach((p) => {
+  p.cover = p.images[0]
+    ? p.images[0].replace(/\/1\.(\w+)$/, '/portada.$1')
+    : p.sep;
+});
+
 export const getProjectById = (id: string) => projects.find((p) => p.id === id);
 
 export const getProjectsByCategory = (category: Category) =>

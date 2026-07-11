@@ -30,27 +30,27 @@ const Home: React.FC = () => {
       </section>
 
       {/* ---------------- SECTIONS ---------------- */}
-      <div className="space-y-16 md:space-y-24 pb-8">
+      <div className="max-w-[1920px] mx-auto space-y-16 md:space-y-24 pb-8">
         {sections.map((section) => {
           const projects = getProjectsByCategory(section.category);
           return (
             <section key={section.category} id={section.category.toLowerCase()}>
               {/* Header: single distributed row on desktop (title · intro ·
                   spread tags); stacked left-aligned on smaller screens.
-                  Divider rule on TOP. */}
+                  Divider rule on TOP. Dense, pure-black, tight tracking. */}
               <div className="px-5 md:px-10 border-t border-ink pt-7 md:pt-9 mb-9 md:mb-12">
                 <div className="flex flex-col gap-3 xl:flex-row xl:items-start xl:gap-10">
-                  <h2 className="font-sans font-bold text-3xl md:text-5xl leading-none tracking-tight uppercase text-balance xl:shrink-0">
+                  <h2 className="font-sans font-bold text-3xl md:text-5xl leading-none tracking-tighter uppercase text-balance text-ink xl:shrink-0">
                     {section.label}
                   </h2>
-                  <p className="font-sans text-xs md:text-sm text-ink/70 leading-snug xl:max-w-[18rem] xl:shrink-0">
+                  <p className="font-sans font-medium text-xs md:text-sm text-ink leading-tight text-pretty xl:max-w-[18rem] xl:shrink-0">
                     {section.intro}
                   </p>
-                  <div className="flex flex-wrap gap-x-8 gap-y-1 xl:flex-1 xl:justify-around xl:items-baseline">
+                  <div className="flex flex-wrap gap-x-6 gap-y-1 xl:flex-1 xl:justify-around xl:items-start">
                     {section.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="font-sans text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-ink/60 whitespace-nowrap"
+                        className="font-sans font-semibold text-[11px] md:text-xs uppercase tracking-tight text-ink whitespace-nowrap"
                       >
                         {tag}
                       </span>

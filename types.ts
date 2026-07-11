@@ -9,6 +9,7 @@ export interface Project {
   tech?: string;
   description: string;
   sep: string; // Animated GIF teaser — used ONLY on the home grid
+  cover?: string; // Still "portada" image — used ONLY as the home carousel cover
   images: string[]; // Real detail media (desktop) for the internal page
   mobileImages?: string[]; // Optional mobile versions (Movil/)
   videos?: string[]; // Optional real videos for the internal page

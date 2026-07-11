@@ -12,7 +12,7 @@ interface ProjectItemProps {
 // text — so NO label underneath) shown next to a still image of the project.
 // The whole pair links to the project's internal page.
 const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
-  const cover = project.images[0];
+  const cover = project.cover ?? project.images[0];
 
   return (
     <Link

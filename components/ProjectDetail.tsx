@@ -16,7 +16,7 @@ const ProjectDetail: React.FC = () => {
   if (!project) {
     return (
       <div className="min-h-[50vh] flex flex-col items-center justify-center">
-        <h2 className="font-serif text-3xl mb-4">Project not found</h2>
+        <h2 className="font-sans font-bold uppercase tracking-tight text-3xl mb-4">Project not found</h2>
         <Link href="/" className="text-xs uppercase tracking-widest border-b border-ink pb-1">
           Back to Home
         </Link>
@@ -74,30 +74,29 @@ const ProjectDetail: React.FC = () => {
               {project.categoryLabel}
             </p>
 
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif mb-6 text-ink leading-tight break-words">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans font-bold tracking-tighter mb-6 text-ink leading-none uppercase text-balance break-words">
               {project.title}
             </h1>
 
             <div className="border-t border-ink w-12 mb-6" />
 
-            <div className="flex flex-wrap gap-x-4 gap-y-1 mb-6">
+            <div className="flex flex-nowrap items-baseline gap-x-4 mb-6 overflow-hidden">
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[10px] font-sans uppercase tracking-[0.18em] text-gray-500"
+                  className="text-[10px] font-sans font-semibold uppercase tracking-tight text-ink whitespace-nowrap"
                 >
                   {tag}
                 </span>
               ))}
+              {project.tech && (
+                <span className="text-[10px] font-sans font-semibold uppercase tracking-tight text-gray-400 whitespace-nowrap">
+                  {project.tech}
+                </span>
+              )}
             </div>
 
-            {project.tech && (
-              <p className="text-[10px] uppercase tracking-[0.18em] text-gray-400 mb-6">
-                {project.tech}
-              </p>
-            )}
-
-            <p className="text-base md:text-lg font-normal text-gray-600 leading-relaxed font-sans whitespace-pre-line text-pretty">
+            <p className="text-base md:text-lg font-normal text-gray-700 leading-relaxed font-sans whitespace-pre-line text-pretty">
               {renderDescription(project.description)}
             </p>
           </div>
@@ -171,7 +170,7 @@ const ProjectDetail: React.FC = () => {
                 </span>
                 <div className="flex items-center">
                   <ArrowLeft className="mr-3 w-5 h-5 text-ink group-hover:-translate-x-1.5 transition-transform duration-300" />
-                  <span className="font-serif text-xl md:text-2xl group-hover:italic transition-all">
+                  <span className="font-sans font-bold uppercase tracking-tight text-xl md:text-2xl group-hover:opacity-60 transition-opacity">
                     {prevProject.title}
                   </span>
                 </div>
@@ -189,7 +188,7 @@ const ProjectDetail: React.FC = () => {
                   Next
                 </span>
                 <div className="flex items-center md:justify-end">
-                  <span className="font-serif text-xl md:text-2xl group-hover:italic transition-all">
+                  <span className="font-sans font-bold uppercase tracking-tight text-xl md:text-2xl group-hover:opacity-60 transition-opacity">
                     {nextProject.title}
                   </span>
                   <ArrowRight className="ml-3 w-5 h-5 text-ink group-hover:translate-x-1.5 transition-transform duration-300" />

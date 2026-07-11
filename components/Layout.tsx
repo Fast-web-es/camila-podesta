@@ -18,7 +18,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </span>
           <Link
             href="/"
-            className="font-sans font-bold text-lg md:text-2xl tracking-[0.06em] uppercase leading-none whitespace-nowrap hover:opacity-60 transition-opacity"
+            className="font-sans font-bold text-lg md:text-2xl tracking-tight uppercase leading-none whitespace-nowrap hover:opacity-60 transition-opacity"
           >
             Camila Podestá
           </Link>
@@ -30,7 +30,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <footer className="py-5 px-5 md:px-10 mt-20 border-t border-ink">
         <div className="max-w-[1920px] mx-auto flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 sm:gap-4">
           <div className="flex items-baseline flex-wrap gap-x-3 gap-y-1">
-            <span className="font-sans font-bold text-sm md:text-base tracking-[0.06em] uppercase">
+            <span className="font-sans font-bold text-sm md:text-base tracking-tight uppercase">
               Camila Podestá
             </span>
             <span className="font-sans text-sm md:text-base text-gray-500">
