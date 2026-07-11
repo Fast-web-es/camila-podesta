@@ -78,7 +78,7 @@ const ProjectDetail: React.FC = () => {
               {project.title}
             </h1>
 
-            <div className="border-t border-ink w-12 mb-6" />
+            <div className="border-t border-ink w-full mb-6" />
 
             <div className="flex flex-nowrap items-baseline gap-x-4 mb-6 overflow-hidden">
               {project.tags.map((tag) => (
@@ -162,7 +162,7 @@ const ProjectDetail: React.FC = () => {
           )}
 
           {/* ---------------- Prev / Next ---------------- */}
-          <div className="border-t border-gray-200 pt-12 mt-8 flex flex-col space-y-8 md:space-y-0 md:flex-row justify-between items-start md:items-center">
+          <div className="pt-12 mt-8 flex flex-col space-y-8 md:space-y-0 md:flex-row justify-between items-start md:items-center">
             {prevProject ? (
               <Link href={`/work/${prevProject.id}`} className="group w-full md:w-auto">
                 <span className="block text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-2">

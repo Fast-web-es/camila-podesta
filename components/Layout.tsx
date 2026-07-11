@@ -10,19 +10,19 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <ScrollToTop />
 
       <header className="fixed top-0 w-full z-50 bg-paper">
-        <div className="max-w-[1920px] mx-auto px-5 md:px-10 py-4 md:py-5 flex justify-between items-start gap-4">
-          <span className="text-xs md:text-base font-sans font-medium leading-tight text-ink max-w-[45%]">
+        <Link
+          href="/"
+          className="max-w-[1920px] mx-auto px-5 md:px-10 py-4 md:py-5 flex justify-between items-start gap-4 group"
+        >
+          <span className="text-xs md:text-base font-sans font-medium leading-tight text-ink max-w-[45%] group-hover:opacity-60 transition-opacity">
             Industrial &amp; 3D design
             <br />
             based in Barcelona
           </span>
-          <Link
-            href="/"
-            className="font-sans font-bold text-lg md:text-2xl tracking-tight uppercase leading-none whitespace-nowrap hover:opacity-60 transition-opacity"
-          >
+          <span className="font-sans font-bold text-lg md:text-2xl tracking-tight uppercase leading-none whitespace-nowrap group-hover:opacity-60 transition-opacity">
             Camila Podestá
-          </Link>
-        </div>
+          </span>
+        </Link>
       </header>
 
       <main className="flex-grow pt-20 md:pt-24 w-full">{children}</main>

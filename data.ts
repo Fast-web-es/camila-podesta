@@ -51,7 +51,7 @@ export const projects: Project[] = [
     description:
       '3D design and animation of a metal totem-style furniture piece, created for the exhibition of a new computer model launch, to be used at ASUS brand events held in various cities across Spain.',
     sep: '/works/retail/_home/asus.gif',
-    images: seq('/works/retail/asus', 4, 'png'),
+    images: seq('/works/retail/asus', 3, 'png'),
     videos: ['/works/retail/asus/video1.mp4'],
   },
   {
@@ -75,7 +75,7 @@ export const projects: Project[] = [
     tech: 'Blender + Rhinoceros 3D',
     description: 'Custom furniture design for a pastry shop located in Barcelona.',
     sep: '/works/retail/_home/miret-pastry.gif',
-    images: seq('/works/retail/miret-pastry', 5, 'png'),
+    images: seq('/works/retail/miret-pastry', 4, 'png'),
   },
   {
     id: 'malfy-display',
@@ -112,7 +112,12 @@ export const projects: Project[] = [
     description:
       'Stand built for the Pediatric Oncology Congress at the Barcelona International Convention Center. Walls made of reinforced white cardboard; transversal elements in methacrylate.',
     sep: '/works/retail/_home/sant-joan-de-deu.gif',
-    images: seq('/works/retail/sant-joan-de-deu', 2, 'png'),
+    images: [
+      '/works/retail/sant-joan-de-deu/1.jpg',
+      '/works/retail/sant-joan-de-deu/2.jpg',
+      '/works/retail/sant-joan-de-deu/3.jpg',
+      '/works/retail/sant-joan-de-deu/4.png',
+    ],
   },
   {
     id: 'dog-chow',
@@ -124,7 +129,7 @@ export const projects: Project[] = [
     description:
       'Design of this promotional stand for Purina Dog Chow, implemented in a hypermarket. House-shaped entrance, vibrant brand colors, and strategic product placement to enhance the in-store experience.',
     sep: '/works/retail/_home/dog-chow.gif',
-    images: seq('/works/retail/dog-chow', 3, 'png'),
+    images: seq('/works/retail/dog-chow', 6, 'png'),
   },
   {
     id: 'alpro',
@@ -174,7 +179,7 @@ export const projects: Project[] = [
     description:
       'Reading nook at different times of day; an intimate layered corner where light transforms the atmosphere — from soft morning hues to deeper evening tones.',
     sep: '/works/interior/_home/cozy-corner.gif',
-    images: seq('/works/interior/cozy-corner', 1, 'jpg'),
+    images: seq('/works/interior/cozy-corner', 2, 'jpg'),
   },
   {
     id: 'night-in-a-remote-place',
@@ -243,7 +248,7 @@ export const projects: Project[] = [
     description:
       'Reinterpretation of a Van Dyck portrait — deconstruction of classical forms through contemporary color palettes, lighting contrasts, and volumetric emphasis.',
     sep: '/works/art/_home/interpretation-of-van-dyck.gif',
-    images: seq('/works/art/interpretation-of-van-dyck', 5, 'png'),
+    images: seq('/works/art/interpretation-of-van-dyck', 4, 'png'),
   },
   {
     id: 'girl-with-sunglasses',
