@@ -2,7 +2,631 @@
   "settings": {
     "name": "Camila Podestá",
     "siteTitle": "Camila Podestá — Portfolio",
-    "availableLanguages": ["en"]
+    "availableLanguages": [
+      "en"
+    ]
   },
-  "projects": []
+  "projects": [
+    {
+      "id": "asus",
+      "title": "ASUS",
+      "category": "Interior",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/retail/asus/portada.png",
+      "description": "no",
+      "images": [
+        "/works/retail/asus/1.png",
+        "/works/retail/asus/2.png",
+        "/works/retail/asus/3.png",
+        "/images/camila/asus/13ca038a-ee9a-4505-aec1-11e4af170f64-logo.png"
+      ],
+      "video": "/works/retail/asus/video1.mp4",
+      "published": true,
+      "order": 0,
+      "source": {
+        "categoryLabel": "RETAIL FURNITURE",
+        "tags": [
+          "3D MODEL",
+          "RENDER",
+          "POP DISPLAY"
+        ],
+        "tech": "Blender",
+        "sep": "/works/retail/_home/asus.gif",
+        "cover": "/works/retail/asus/portada.png",
+        "videos": [
+          "/works/retail/asus/video1.mp4"
+        ]
+      }
+    },
+    {
+      "id": "chocolate-ametller",
+      "title": "CHOCOLATE AMATLLER",
+      "category": "Retail",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/retail/chocolate-ametller/portada.jpg",
+      "description": "Production of metal furniture for bulk chocolates for the brands Simon Coll and Chocolates Amatller, for their stores located in Barcelona.",
+      "images": [
+        "/works/retail/chocolate-ametller/1.jpg",
+        "/works/retail/chocolate-ametller/2.jpg",
+        "/works/retail/chocolate-ametller/3.jpg",
+        "/works/retail/chocolate-ametller/4.jpg",
+        "/works/retail/chocolate-ametller/5.jpg"
+      ],
+      "published": true,
+      "order": 1,
+      "source": {
+        "categoryLabel": "RETAIL FURNITURE",
+        "tags": [
+          "3D MODEL",
+          "RENDER",
+          "POP DISPLAY"
+        ],
+        "tech": "Blender",
+        "sep": "/works/retail/_home/chocolate-ametller.gif",
+        "cover": "/works/retail/chocolate-ametller/portada.jpg"
+      }
+    },
+    {
+      "id": "miret-pastry",
+      "title": "MIRET PASTRY",
+      "category": "Retail",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/retail/miret-pastry/portada.png",
+      "description": "Custom furniture design for a pastry shop located in Barcelona.",
+      "images": [
+        "/works/retail/miret-pastry/1.png",
+        "/works/retail/miret-pastry/2.png",
+        "/works/retail/miret-pastry/3.png",
+        "/works/retail/miret-pastry/4.png"
+      ],
+      "published": true,
+      "order": 2,
+      "source": {
+        "categoryLabel": "RETAIL FURNITURE",
+        "tags": [
+          "3D MODEL",
+          "RENDER",
+          "POP DISPLAY"
+        ],
+        "tech": "Blender + Rhinoceros 3D",
+        "sep": "/works/retail/_home/miret-pastry.gif",
+        "cover": "/works/retail/miret-pastry/portada.png"
+      }
+    },
+    {
+      "id": "malfy-display",
+      "title": "MALFY DISPLAY",
+      "category": "Retail",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/retail/malfy-display/portada.jpg",
+      "description": "Prototyping and subsequent production of gin display units, intended for airports and large retail markets.",
+      "images": [
+        "/works/retail/malfy-display/1.jpg",
+        "/works/retail/malfy-display/2.jpg",
+        "/works/retail/malfy-display/3.jpg",
+        "/works/retail/malfy-display/4.jpg",
+        "/works/retail/malfy-display/5.jpg"
+      ],
+      "published": true,
+      "order": 3,
+      "source": {
+        "categoryLabel": "RETAIL FURNITURE",
+        "tags": [
+          "3D MODEL",
+          "RENDER",
+          "POP DISPLAY"
+        ],
+        "tech": "Blender",
+        "sep": "/works/retail/_home/malfy-display.gif",
+        "cover": "/works/retail/malfy-display/portada.jpg"
+      }
+    },
+    {
+      "id": "kinder",
+      "title": "KINDER",
+      "category": "Retail",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/retail/kinder/portada.jpg",
+      "description": "Prototyping and production of Kinder furniture units for airport retail locations across Portugal.",
+      "images": [
+        "/works/retail/kinder/1.jpg",
+        "/works/retail/kinder/2.jpg",
+        "/works/retail/kinder/3.jpg",
+        "/works/retail/kinder/4.jpg",
+        "/works/retail/kinder/5.jpg",
+        "/works/retail/kinder/6.jpg"
+      ],
+      "published": true,
+      "order": 4,
+      "source": {
+        "categoryLabel": "RETAIL FURNITURE",
+        "tags": [
+          "3D MODEL",
+          "RENDER",
+          "POP DISPLAY"
+        ],
+        "tech": "Blender",
+        "sep": "/works/retail/_home/kinder.gif",
+        "cover": "/works/retail/kinder/portada.jpg",
+        "mobileImages": [
+          "/works/retail/kinder/m1.jpg",
+          "/works/retail/kinder/m2.jpg",
+          "/works/retail/kinder/m3.jpg",
+          "/works/retail/kinder/m4.jpg"
+        ]
+      }
+    },
+    {
+      "id": "sant-joan-de-deu",
+      "title": "SANT JOAN DE DÉU STAND",
+      "category": "Retail",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/retail/sant-joan-de-deu/portada.jpg",
+      "description": "Stand built for the Pediatric Oncology Congress at the Barcelona International Convention Center. Walls made of reinforced white cardboard; transversal elements in methacrylate.",
+      "images": [
+        "/works/retail/sant-joan-de-deu/1.jpg",
+        "/works/retail/sant-joan-de-deu/2.jpg",
+        "/works/retail/sant-joan-de-deu/3.jpg",
+        "/works/retail/sant-joan-de-deu/4.png"
+      ],
+      "published": true,
+      "order": 5,
+      "source": {
+        "categoryLabel": "RETAIL FURNITURE",
+        "tags": [
+          "3D MODEL",
+          "RENDER",
+          "POP DISPLAY"
+        ],
+        "tech": "Blender",
+        "sep": "/works/retail/_home/sant-joan-de-deu.gif",
+        "cover": "/works/retail/sant-joan-de-deu/portada.jpg"
+      }
+    },
+    {
+      "id": "dog-chow",
+      "title": "DOG CHOW STAND",
+      "category": "Retail",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/retail/dog-chow/portada.png",
+      "description": "Design of this promotional stand for Purina Dog Chow, implemented in a hypermarket. House-shaped entrance, vibrant brand colors, and strategic product placement to enhance the in-store experience.",
+      "images": [
+        "/works/retail/dog-chow/1.png",
+        "/works/retail/dog-chow/2.png",
+        "/works/retail/dog-chow/3.png",
+        "/works/retail/dog-chow/4.png",
+        "/works/retail/dog-chow/5.png",
+        "/works/retail/dog-chow/6.png"
+      ],
+      "published": true,
+      "order": 6,
+      "source": {
+        "categoryLabel": "RETAIL FURNITURE",
+        "tags": [
+          "3D MODEL",
+          "RENDER",
+          "POP DISPLAY"
+        ],
+        "tech": "Blender",
+        "sep": "/works/retail/_home/dog-chow.gif",
+        "cover": "/works/retail/dog-chow/portada.png"
+      }
+    },
+    {
+      "id": "alpro",
+      "title": "ALPRO",
+      "category": "Retail",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/retail/alpro/portada.png",
+      "description": "Production of a series of display units for Alpro's plant-based milk and ice cream line, for hypermarkets across Spain.",
+      "images": [
+        "/works/retail/alpro/1.png",
+        "/works/retail/alpro/2.png",
+        "/works/retail/alpro/3.png",
+        "/works/retail/alpro/4.png",
+        "/works/retail/alpro/5.png"
+      ],
+      "published": true,
+      "order": 7,
+      "source": {
+        "categoryLabel": "RETAIL FURNITURE",
+        "tags": [
+          "3D MODEL",
+          "RENDER",
+          "POP DISPLAY"
+        ],
+        "tech": "Blender",
+        "sep": "/works/retail/_home/alpro.gif",
+        "cover": "/works/retail/alpro/portada.png"
+      }
+    },
+    {
+      "id": "living-room-by-the-sea",
+      "title": "LIVING ROOM BY THE SEA",
+      "category": "Interior",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/interior/living-room-by-the-sea/portada.jpg",
+      "description": "Seaside living room and dining area render. Designed to capture natural light and relaxed elegance, with a central shelving unit that subtly divides the space. Contemporary elements with retro touches.",
+      "images": [
+        "/works/interior/living-room-by-the-sea/1.jpg",
+        "/works/interior/living-room-by-the-sea/2.jpg",
+        "/works/interior/living-room-by-the-sea/3.jpg"
+      ],
+      "published": true,
+      "order": 8,
+      "source": {
+        "categoryLabel": "INTERIOR DESIGN",
+        "tags": [
+          "3D"
+        ],
+        "tech": "Blender",
+        "sep": "/works/interior/_home/living-room-by-the-sea.gif",
+        "cover": "/works/interior/living-room-by-the-sea/portada.jpg"
+      }
+    },
+    {
+      "id": "lilac-living-room",
+      "title": "LILAC LIVING ROOM",
+      "category": "Interior",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/interior/lilac-living-room/portada.jpg",
+      "description": "A serene dining nook bathed in morning light. Lilac walls and soft textures frame a sculptural table and vibrant accents, blending calm with character.",
+      "images": [
+        "/works/interior/lilac-living-room/1.jpg"
+      ],
+      "published": true,
+      "order": 9,
+      "source": {
+        "categoryLabel": "INTERIOR DESIGN",
+        "tags": [
+          "3D"
+        ],
+        "tech": "Blender",
+        "sep": "/works/interior/_home/lilac-living-room.gif",
+        "cover": "/works/interior/lilac-living-room/portada.jpg"
+      }
+    },
+    {
+      "id": "cozy-corner",
+      "title": "COZY CORNER",
+      "category": "Interior",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/interior/cozy-corner/portada.jpg",
+      "description": "Reading nook at different times of day; an intimate layered corner where light transforms the atmosphere — from soft morning hues to deeper evening tones.",
+      "images": [
+        "/works/interior/cozy-corner/1.jpg",
+        "/works/interior/cozy-corner/2.jpg"
+      ],
+      "published": true,
+      "order": 10,
+      "source": {
+        "categoryLabel": "INTERIOR DESIGN",
+        "tags": [
+          "3D"
+        ],
+        "tech": "Blender",
+        "sep": "/works/interior/_home/cozy-corner.gif",
+        "cover": "/works/interior/cozy-corner/portada.jpg"
+      }
+    },
+    {
+      "id": "night-in-a-remote-place",
+      "title": "NIGHT IN A REMOTE PLACE",
+      "category": "Interior",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/interior/night-in-a-remote-place/portada.png",
+      "description": "Outdoor lounge at night. A surreal retreat nestled in a lush, undefined landscape — where soft light and curved architecture invite stillness.",
+      "images": [
+        "/works/interior/night-in-a-remote-place/1.png"
+      ],
+      "published": true,
+      "order": 11,
+      "source": {
+        "categoryLabel": "INTERIOR DESIGN",
+        "tags": [
+          "3D"
+        ],
+        "tech": "Blender",
+        "sep": "/works/interior/_home/night-in-a-remote-place.gif",
+        "cover": "/works/interior/night-in-a-remote-place/portada.png"
+      }
+    },
+    {
+      "id": "unknown-place",
+      "title": "UNKNOWN PLACE",
+      "category": "Interior",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/interior/unknown-place/portada.png",
+      "description": "Open-air gathering space. Part of the same remote retreat as the lounge; a sunlit circular arena blending brutalist textures with tropical surroundings.",
+      "images": [
+        "/works/interior/unknown-place/1.png"
+      ],
+      "published": true,
+      "order": 12,
+      "source": {
+        "categoryLabel": "INTERIOR DESIGN",
+        "tags": [
+          "3D"
+        ],
+        "tech": "Blender",
+        "sep": "/works/interior/_home/unknown-place.gif",
+        "cover": "/works/interior/unknown-place/portada.png"
+      }
+    },
+    {
+      "id": "retro-living-room",
+      "title": "RETRO LIVING ROOM",
+      "category": "Interior",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/interior/retro-living-room/portada.png",
+      "description": "AI-generated living room. A bold interplay of color and form — base image fully generated with AI and later enhanced in Photoshop.",
+      "images": [
+        "/works/interior/retro-living-room/1.png"
+      ],
+      "published": true,
+      "order": 13,
+      "source": {
+        "categoryLabel": "INTERIOR DESIGN",
+        "tags": [
+          "3D"
+        ],
+        "tech": "AI + Photoshop",
+        "sep": "/works/interior/_home/retro-living-room.gif",
+        "cover": "/works/interior/retro-living-room/portada.png"
+      }
+    },
+    {
+      "id": "ninja-girl",
+      "title": "NINJA GIRL",
+      "category": "Art",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/art/ninja-girl/portada.png",
+      "description": "Part of a series that explores color, light, and fabric textures.",
+      "images": [
+        "/works/art/ninja-girl/1.png",
+        "/works/art/ninja-girl/2.png",
+        "/works/art/ninja-girl/3.png",
+        "/works/art/ninja-girl/4.png"
+      ],
+      "published": true,
+      "order": 14,
+      "source": {
+        "categoryLabel": "ART & ILUSTRATION",
+        "tags": [
+          "OIL PAINTING",
+          "ILLUSTRATOR"
+        ],
+        "sep": "/works/art/_home/ninja-girl.gif",
+        "cover": "/works/art/ninja-girl/portada.png"
+      }
+    },
+    {
+      "id": "girl-with-puffer",
+      "title": "GIRL WITH PUFFER",
+      "category": "Art",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/art/girl-with-puffer/portada.png",
+      "description": "Part of a series that explores color, light, and fabric textures.",
+      "images": [
+        "/works/art/girl-with-puffer/1.png",
+        "/works/art/girl-with-puffer/2.png",
+        "/works/art/girl-with-puffer/3.png",
+        "/works/art/girl-with-puffer/4.png"
+      ],
+      "published": true,
+      "order": 15,
+      "source": {
+        "categoryLabel": "ART & ILUSTRATION",
+        "tags": [
+          "OIL PAINTING",
+          "ILLUSTRATOR"
+        ],
+        "sep": "/works/art/_home/girl-with-puffer.gif",
+        "cover": "/works/art/girl-with-puffer/portada.png"
+      }
+    },
+    {
+      "id": "interpretation-of-van-dyck",
+      "title": "INTERPRETATION OF VAN DYCK",
+      "category": "Art",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/art/interpretation-of-van-dyck/portada.png",
+      "description": "Reinterpretation of a Van Dyck portrait — deconstruction of classical forms through contemporary color palettes, lighting contrasts, and volumetric emphasis.",
+      "images": [
+        "/works/art/interpretation-of-van-dyck/1.png",
+        "/works/art/interpretation-of-van-dyck/2.png",
+        "/works/art/interpretation-of-van-dyck/3.png",
+        "/works/art/interpretation-of-van-dyck/4.png"
+      ],
+      "published": true,
+      "order": 16,
+      "source": {
+        "categoryLabel": "ART & ILUSTRATION",
+        "tags": [
+          "OIL PAINTING",
+          "ILLUSTRATOR"
+        ],
+        "sep": "/works/art/_home/interpretation-of-van-dyck.gif",
+        "cover": "/works/art/interpretation-of-van-dyck/portada.png"
+      }
+    },
+    {
+      "id": "girl-with-sunglasses",
+      "title": "GIRL WITH SUNGLASSES",
+      "category": "Art",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/art/girl-with-sunglasses/portada.png",
+      "description": "Part of a series that explores color, light, and fabric textures.",
+      "images": [
+        "/works/art/girl-with-sunglasses/1.png",
+        "/works/art/girl-with-sunglasses/2.png",
+        "/works/art/girl-with-sunglasses/3.png",
+        "/works/art/girl-with-sunglasses/4.png"
+      ],
+      "published": true,
+      "order": 17,
+      "source": {
+        "categoryLabel": "ART & ILUSTRATION",
+        "tags": [
+          "OIL PAINTING",
+          "ILLUSTRATOR"
+        ],
+        "sep": "/works/art/_home/girl-with-sunglasses.gif",
+        "cover": "/works/art/girl-with-sunglasses/portada.png"
+      }
+    },
+    {
+      "id": "star-pillow-i",
+      "title": "STAR PILLOW I",
+      "category": "Art",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/art/star-pillow-i/portada.png",
+      "description": "Part of a series that explores color, light, and fabric textures.",
+      "images": [
+        "/works/art/star-pillow-i/1.png",
+        "/works/art/star-pillow-i/2.png",
+        "/works/art/star-pillow-i/3.png",
+        "/works/art/star-pillow-i/4.png"
+      ],
+      "published": true,
+      "order": 18,
+      "source": {
+        "categoryLabel": "ART & ILUSTRATION",
+        "tags": [
+          "OIL PAINTING",
+          "ILLUSTRATOR"
+        ],
+        "sep": "/works/art/_home/star-pillow-i.gif",
+        "cover": "/works/art/star-pillow-i/portada.png"
+      }
+    },
+    {
+      "id": "star-pillow-ii",
+      "title": "STAR PILLOW II",
+      "category": "Art",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/art/star-pillow-ii/portada.png",
+      "description": "Part of a series that explores color, light, and fabric textures.",
+      "images": [
+        "/works/art/star-pillow-ii/1.png",
+        "/works/art/star-pillow-ii/2.png",
+        "/works/art/star-pillow-ii/3.png",
+        "/works/art/star-pillow-ii/4.png"
+      ],
+      "published": true,
+      "order": 19,
+      "source": {
+        "categoryLabel": "ART & ILUSTRATION",
+        "tags": [
+          "OIL PAINTING",
+          "ILLUSTRATOR"
+        ],
+        "sep": "/works/art/_home/star-pillow-ii.gif",
+        "cover": "/works/art/star-pillow-ii/portada.png"
+      }
+    },
+    {
+      "id": "canine-tarot-2d",
+      "title": "CANINE TAROT DECK (2D)",
+      "category": "Art",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/art/canine-tarot-2d/portada.png",
+      "description": "Reinterpretation of the classic arcana with dogs as protagonists. Created entirely in Illustrator; each card explores fate, intuition, and symbolism.",
+      "images": [
+        "/works/art/canine-tarot-2d/1.png",
+        "/works/art/canine-tarot-2d/2.png",
+        "/works/art/canine-tarot-2d/3.png",
+        "/works/art/canine-tarot-2d/4.png"
+      ],
+      "published": true,
+      "order": 20,
+      "source": {
+        "categoryLabel": "ART & ILUSTRATION",
+        "tags": [
+          "ILLUSTRATOR"
+        ],
+        "tech": "Illustrator",
+        "sep": "/works/art/_home/canine-tarot-2d.gif",
+        "cover": "/works/art/canine-tarot-2d/portada.png"
+      }
+    },
+    {
+      "id": "canine-tarot-3d",
+      "title": "CANINE TAROT DECK (3D)",
+      "category": "Art",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/art/canine-tarot-3d/portada.png",
+      "description": "3D continuation of the tarot; the canine characters gain depth, texture, and presence, preserving the original symbolism.",
+      "images": [
+        "/works/art/canine-tarot-3d/1.png",
+        "/works/art/canine-tarot-3d/2.png",
+        "/works/art/canine-tarot-3d/3.png",
+        "/works/art/canine-tarot-3d/4.png",
+        "/works/art/canine-tarot-3d/5.png",
+        "/works/art/canine-tarot-3d/6.png",
+        "/works/art/canine-tarot-3d/7.png",
+        "/works/art/canine-tarot-3d/8.png"
+      ],
+      "published": true,
+      "order": 21,
+      "source": {
+        "categoryLabel": "ART & ILUSTRATION",
+        "tags": [
+          "ILLUSTRATOR"
+        ],
+        "tech": "Blender",
+        "sep": "/works/art/_home/canine-tarot-3d.gif",
+        "cover": "/works/art/canine-tarot-3d/portada.png"
+      }
+    },
+    {
+      "id": "tirano-branding",
+      "title": "TIRANO BRANDING",
+      "category": "Art",
+      "year": "",
+      "client": "",
+      "thumbnail": "/works/art/tirano-branding/portada.png",
+      "description": "Illustrations created for a restaurant in Mallorca: framed artworks for the interior, food & drink menu design, and the contact card.",
+      "images": [
+        "/works/art/tirano-branding/1.png",
+        "/works/art/tirano-branding/2.png",
+        "/works/art/tirano-branding/3.png",
+        "/works/art/tirano-branding/4.png",
+        "/works/art/tirano-branding/5.png"
+      ],
+      "published": true,
+      "order": 22,
+      "source": {
+        "categoryLabel": "ART & ILUSTRATION",
+        "tags": [
+          "ILLUSTRATOR"
+        ],
+        "tech": "Illustrator",
+        "sep": "/works/art/_home/tirano-branding.gif",
+        "cover": "/works/art/tirano-branding/portada.png"
+      }
+    }
+  ]
 }
