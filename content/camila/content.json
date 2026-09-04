@@ -10,16 +10,15 @@
     {
       "id": "asus",
       "title": "ASUS",
-      "category": "Interior",
+      "category": "Retail",
       "year": "",
       "client": "",
       "thumbnail": "/works/retail/asus/portada.png",
-      "description": "no",
+      "description": "3D design and animation of a metal totem-style furniture piece, created for the exhibition of a new computer model launch, to be used at ASUS brand events held in various cities across Spain.",
       "images": [
         "/works/retail/asus/1.png",
         "/works/retail/asus/2.png",
-        "/works/retail/asus/3.png",
-        "/images/camila/asus/13ca038a-ee9a-4505-aec1-11e4af170f64-logo.png"
+        "/works/retail/asus/3.png"
       ],
       "video": "/works/retail/asus/video1.mp4",
       "published": true,
