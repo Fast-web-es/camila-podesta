@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { editableProjects as initialProjects, settings as initialSettings } from '@/content/portfolio';
 import { portfolioId, portfolioName } from '@/config/portfolio';
+import { dashboardCategories } from '@/config/dashboard';
 import type { EditableProject, PortfolioSettings } from '@/types';
 
 const STORAGE_KEY = `${portfolioId}-portfolio-admin-projects`;
@@ -151,7 +152,7 @@ export default function AdminPage() {
     const project: EditableProject = {
       id,
       title: 'New project',
-      category: 'Commercial',
+      category: dashboardCategories[0],
       year: new Date().getFullYear().toString(),
       client: '',
       thumbnail: '',
@@ -354,6 +355,12 @@ export default function AdminPage() {
                 </label>
 
                 <div className="grid gap-6 sm:grid-cols-2">
+                  <label className="grid gap-2 text-sm">
+                    <span className="text-black/55">Category</span>
+                    <select value={selectedProject.category} onChange={(event) => updateSelected({ category: event.target.value as EditableProject['category'] })} className="rounded border border-black/15 bg-white px-3 py-3 outline-none focus:border-black">
+                      {dashboardCategories.map((category) => <option key={category} value={category}>{category}</option>)}
+                    </select>
+                  </label>
                   <label className="grid gap-2 text-sm">
                     <span className="text-black/55">Client</span>
                     <input
