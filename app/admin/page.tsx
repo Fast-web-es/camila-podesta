@@ -105,6 +105,11 @@ export default function AdminPage() {
   };
 
   const publishChanges = () => {
+    const pendingBytes = pendingUploads.reduce((total, upload) => total + upload.content.length, 0);
+    if (pendingBytes > 3_500_000) {
+      setSaveError('The selected images are too large together. Publish them in smaller batches.');
+      return;
+    }
     setSaving(true);
     setSaveError('');
     const content = { settings: portfolioSettings, projects };
@@ -115,7 +120,16 @@ export default function AdminPage() {
       body: JSON.stringify({ content, files: pendingUploads, removedImages }),
     })
       .then(async (response) => {
-        if (!response.ok) throw new Error((await response.json()).error || 'Could not save');
+        if (!response.ok) {
+          const body = await response.text();
+          let message = body || 'Could not save';
+          try {
+            message = JSON.parse(body).error || message;
+          } catch {
+            // Vercel may return a plain-text error for oversized requests.
+          }
+          throw new Error(message.includes('Request Entity') ? 'The images are too large. Use smaller images and try again.' : message);
+        }
         const result = await response.json();
         if (Array.isArray(result.content?.projects)) {
           setProjects(result.content.projects);
@@ -191,6 +205,10 @@ export default function AdminPage() {
       const uploaded: string[] = [];
       for (const file of Array.from(files)) {
         if (!file.type.startsWith('image/')) continue;
+        if (file.size > 3_000_000) {
+          setSaveError(`${file.name} is too large. Please use an image under 3 MB.`);
+          continue;
+        }
         const content = await new Promise<string>((resolve, reject) => {
           const reader = new FileReader();
           reader.onload = () => resolve(String(reader.result));
@@ -325,31 +343,6 @@ export default function AdminPage() {
               {saveError && <p className="mb-6 max-w-3xl rounded border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{saveError}</p>}
               {statusMessage && <p className="mb-6 max-w-3xl text-sm text-black/50">{statusMessage}</p>}
 
-              <div className="mb-8 grid max-w-3xl gap-6 border-b border-black/10 pb-8">
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-black/45">Portfolio settings</p>
-                  <p className="mt-2 text-sm text-black/55">These details appear across the public website.</p>
-                </div>
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <label className="grid gap-2 text-sm">
-                    <span className="text-black/55">Name</span>
-                    <input value={portfolioSettings.name} onChange={(event) => updateSettings({ name: event.target.value })} className="rounded border border-black/15 bg-white px-3 py-3 outline-none focus:border-black" />
-                  </label>
-                  <label className="grid gap-2 text-sm">
-                    <span className="text-black/55">Email</span>
-                    <input type="email" value={portfolioSettings.email ?? ''} onChange={(event) => updateSettings({ email: event.target.value })} className="rounded border border-black/15 bg-white px-3 py-3 outline-none focus:border-black" />
-                  </label>
-                </div>
-                <label className="grid gap-2 text-sm">
-                  <span className="text-black/55">Instagram username</span>
-                  <input value={portfolioSettings.instagram ?? ''} onChange={(event) => updateSettings({ instagram: event.target.value.replace(/^@/, '') })} placeholder="username" className="rounded border border-black/15 bg-white px-3 py-3 outline-none focus:border-black" />
-                </label>
-                <label className="grid gap-2 text-sm">
-                  <span className="text-black/55">Bio</span>
-                  <textarea value={portfolioSettings.bio ?? ''} onChange={(event) => updateSettings({ bio: event.target.value })} rows={3} className="resize-y rounded border border-black/15 bg-white px-3 py-3 leading-6 outline-none focus:border-black" />
-                </label>
-              </div>
-
               <div className="grid max-w-3xl gap-6">
                 <label className="grid gap-2 text-sm">
                   <span className="text-black/55">Title</span>
@@ -436,4 +429,3 @@ export default function AdminPage() {
     </main>
   );
 }
-
