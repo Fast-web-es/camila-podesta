@@ -1,5 +1,7 @@
 export type Category = 'Retail' | 'Interior' | 'Art';
 
+export type DashboardCategory = Category | 'Commercial' | 'Personal' | 'Editorial';
+
 export interface Project {
   id: string;
   title: string;
@@ -20,4 +22,38 @@ export interface Section {
   label: string;
   intro: string;
   tags: string[];
+}
+
+// Shared content shape used by the reusable admin dashboard.
+export interface EditableProject {
+  id: string;
+  title: string;
+  category: DashboardCategory;
+  year: string;
+  client?: string;
+  thumbnail: string;
+  description: string;
+  images: string[];
+  video?: string;
+  published: boolean;
+  order: number;
+  source?: {
+    categoryLabel?: string;
+    tags?: string[];
+    tech?: string;
+    sep?: string;
+    cover?: string;
+    mobileImages?: string[];
+    videos?: string[];
+  };
+}
+
+export interface PortfolioSettings {
+  name: string;
+  siteTitle: string;
+  intro?: string;
+  email?: string;
+  instagram?: string;
+  bio?: string;
+  availableLanguages: string[];
 }
