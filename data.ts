@@ -1,4 +1,5 @@
 import { Project, Section, Category } from './types';
+import persistedContent from './content/camila/content.json';
 
 // ---------------------------------------------------------------------------
 // Camila Podestá — Industrial & 3D design based in Barcelona
@@ -39,7 +40,7 @@ export const sections: Section[] = [
 const seq = (base: string, n: number, ext: string, prefix = ''): string[] =>
   Array.from({ length: n }, (_, i) => `${base}/${prefix}${i + 1}.${ext}`);
 
-export const projects: Project[] = [
+const legacyProjects: Project[] = [
   // ======================= RETAIL FURNITURE =======================
   {
     id: 'asus',
@@ -320,11 +321,53 @@ export const projects: Project[] = [
 
 // Home carousel cover = dedicated "portada" still (decoupled from internal
 // images, so image 1 can be changed without affecting the home teaser).
-projects.forEach((p) => {
+legacyProjects.forEach((p) => {
   p.cover = p.images[0]
     ? p.images[0].replace(/\/1\.(\w+)$/, '/portada.$1')
     : p.sep;
 });
+
+const savedProjects = persistedContent.projects as Array<{
+  id: string;
+  title: string;
+  category: string;
+  year?: string;
+  client?: string;
+  thumbnail: string;
+  description: string;
+  images: string[];
+  video?: string;
+  source?: {
+    categoryLabel?: string;
+    tags?: string[];
+    tech?: string;
+    sep?: string;
+    cover?: string;
+    mobileImages?: string[];
+    videos?: string[];
+  };
+  published: boolean;
+  order: number;
+}>;
+
+// Once the dashboard has published content, the public pages use it instead
+// of the original static demo data. The visual components remain unchanged.
+export const projects: Project[] = savedProjects.length
+  ? savedProjects.filter((project) => project.published).sort((a, b) => a.order - b.order).map((project) => ({
+      id: project.id,
+      title: project.title,
+      category: (project.source?.categoryLabel?.includes('INTERIOR') ? 'Interior' : project.category) as Category,
+      categoryLabel: project.source?.categoryLabel || project.category,
+      tags: project.source?.tags || [],
+      tech: project.source?.tech,
+      description: project.description,
+      sep: project.source?.sep || project.thumbnail,
+      cover: project.source?.cover || project.thumbnail,
+      images: project.images,
+      mobileImages: project.source?.mobileImages,
+      videos: project.video ? [project.video] : project.source?.videos,
+    }))
+  : legacyProjects;
 
 export const getProjectById = (id: string) => projects.find((p) => p.id === id);
 

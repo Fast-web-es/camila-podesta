@@ -1,0 +1,8 @@
+[
+  {
+    "email": "client@example.com",
+    "passwordHash": "GENERATE_WITH_scripts/hash-password.mjs",
+    "portfolio": "portfolio-id"
+  }
+]
+
