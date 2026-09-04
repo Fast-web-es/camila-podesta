@@ -46,7 +46,7 @@ export async function PUT(request: NextRequest) {
   const commitResponse = await github(`/git/commits/${ref.object.sha}`);
   const commit = await commitResponse.json();
 
-  const safeFiles = files.filter((file: { projectId?: string; filename?: string; content?: string }) =>
+  const safeFiles = files.filter((file: { projectId?: string; filename?: string; content?: string; placeholder?: string }) =>
     /^[a-z0-9-]+$/.test(String(file.projectId)) &&
     typeof file.content === 'string' && /^data:image\/(jpeg|png|webp|gif);base64,/.test(file.content)
   );
@@ -70,6 +70,7 @@ export async function PUT(request: NextRequest) {
     const project = publishedProjects.find((candidate: { id: string }) => candidate.id === file.projectId);
     if (project) {
       project.images = project.images.map((image: string) => image === file.placeholder ? `/images/${portfolio}/${file.projectId}/${filePath.split('/').pop()}` : image);
+      if (project.thumbnail === file.placeholder) project.thumbnail = `/images/${portfolio}/${file.projectId}/${filePath.split('/').pop()}`;
     }
   }
 
@@ -95,4 +96,3 @@ export async function PUT(request: NextRequest) {
 
   return NextResponse.json({ ok: true, content: { ...content, projects: publishedProjects } });
 }
-

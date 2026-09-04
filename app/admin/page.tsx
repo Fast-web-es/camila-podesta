@@ -26,6 +26,7 @@ export default function AdminPage() {
   const [removedImages, setRemovedImages] = useState<string[]>([]);
   const [saveError, setSaveError] = useState('');
   const [showPublishConfirm, setShowPublishConfirm] = useState(false);
+  const [showPublishedNotice, setShowPublishedNotice] = useState(false);
 
   const authenticate = async (loginEmail: string, loginPassword: string) => {
     setAuthError('');
@@ -113,12 +114,19 @@ export default function AdminPage() {
     }
     setSaving(true);
     setSaveError('');
-    const content = { settings: portfolioSettings, projects };
+    const uploadTokens = new Map(pendingUploads.map((upload, index) => [upload.placeholder, `__upload_${index}__`]))
+    const publishProjects = projects.map((project) => ({
+      ...project,
+      thumbnail: uploadTokens.get(project.thumbnail) ?? project.thumbnail,
+      images: project.images.map((image) => uploadTokens.get(image) ?? image),
+    }));
+    const content = { settings: portfolioSettings, projects: publishProjects };
+    const files = pendingUploads.map((upload, index) => ({ ...upload, placeholder: `__upload_${index}__` }));
 
     fetch(`/api/admin/publish?portfolio=${portfolioId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content, files: pendingUploads, removedImages }),
+      body: JSON.stringify({ content, files, removedImages }),
     })
       .then(async (response) => {
         if (!response.ok) {
@@ -142,6 +150,7 @@ export default function AdminPage() {
         setRemovedImages([]);
         setHasChanges(false);
         setStatusMessage('Published successfully');
+        setShowPublishedNotice(true);
       })
       .catch((error: Error) => setSaveError(error.message))
       .finally(() => setSaving(false));
@@ -275,6 +284,16 @@ export default function AdminPage() {
 
   return (
     <main className="min-h-screen bg-[#f6f5f2] text-[#181818]">
+      {showPublishedNotice && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-5" role="dialog" aria-modal="true" aria-labelledby="published-title">
+          <div className="w-full max-w-md rounded bg-white p-7 shadow-xl">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-black/45">Changes published</p>
+            <h2 id="published-title" className="mt-3 text-2xl">Your portfolio is updating</h2>
+            <p className="mt-4 text-sm leading-6 text-black/60">The changes have been sent to Vercel. They will normally appear on the public website within 1–2 minutes. Please wait before publishing again.</p>
+            <button onClick={() => setShowPublishedNotice(false)} className="mt-6 w-full rounded bg-black px-5 py-3 text-sm text-white">Got it</button>
+          </div>
+        </div>
+      )}
       <div className="mx-auto flex min-h-screen max-w-6xl flex-col md:flex-row">
         <aside className="border-b border-black/10 bg-white p-5 md:w-80 md:border-b-0 md:border-r md:p-7">
           <div className="mb-8 flex items-start justify-between gap-4">
